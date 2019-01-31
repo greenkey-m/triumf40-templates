@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.0" type="template" client="site">
+    <name>Triumf31</name>
+    <version>3.1</version>
+    <creationDate>18/02/2017</creationDate>
+    <author>Greenkey studio</author>
+    <authorEmail>info@greenkey.ru</authorEmail>
+    <copyright>Copyright (C) 2017 Greenkey studio, All rights reserved.</copyright>
+    <description>TPL_TRIUMF31_XML_DESCRIPTION</description>
+    <files>
+        <filename>favicon.ico</filename>
+        <filename>error.php</filename>
+        <filename>index.php</filename>
+        <filename>index.html</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_thumbnail.png</filename>
+        <folder>style</folder>
+        <folder>media</folder>
+        <folder>html</folder>
+        <folder>code</folder>
+        <folder>language</folder>
+        <folder>fonts</folder>
+        <folder>less</folder>
+    </files>
+    <positions>
+        <position>header</position>
+        <position>subheader-1</position>
+        <position>subheader-2</position>
+        <position>search</position>
+        <position>top</position>
+        <position>center</position>
+        <position>subcenter-1</position>
+        <position>subcenter-2</position>
+        <position>left</position>
+        <position>right</position>
+        <position>bottom</position>
+        <position>subfooter-1</position>
+        <position>subfooter-2</position>
+        <position>subfooter-3</position>
+        <position>subfooter-4</position>
+        <position>aside</position>
+        <position>footer</position>
+        <position>debug</position>
+    </positions>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.tpl_triumf31.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_triumf31.sys.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.tpl_triumf31.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.tpl_triumf31.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                <field name="templateColor" class="" type="color" default="#08C"
+                                       label="TPL_TRIUMF31_COLOR_LABEL"
+                                       description="TPL_TRIUMF31_COLOR_DESC" />
+
+                <field name="templateBackgroundColor" class="" type="color" default="#F4F6F7"
+                                       label="TPL_TRIUMF31_BACKGROUND_COLOR_LABEL"
+                                       description="TPL_TRIUMF31_BACKGROUND_COLOR_DESC" />
+
+                <field name="logoFile" class="" type="media" default=""
+                                       label="TPL_TRIUMF31_LOGO_LABEL"
+                                       description="TPL_TRIUMF31_LOGO_DESC" />
+
+                <field name="sitetitle"  type="text" default=""
+                                       label="JGLOBAL_TITLE"
+                                       description="JFIELD_ALT_PAGE_TITLE_LABEL"
+                                       filter="string" />
+
+                <field name="sitedescription"  type="text" default=""
+                                       label="JGLOBAL_DESCRIPTION"
+                                       description="JGLOBAL_SUBHEADING_DESC"
+                                       filter="string" />
+
+                <field name="googleFont"
+                                       type="radio"
+                                       class="btn-group"
+                                       default="1"
+                                       label="TPL_TRIUMF31_FONT_LABEL"
+                                       description="TPL_TRIUMF31_FONT_DESC"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="googleFontName" class="" type="text" default="Open+Sans"
+                                       label="TPL_TRIUMF31_FONT_NAME_LABEL"
+                                       description="TPL_TRIUMF31_FONT_NAME_DESC" />
+
+                <field name="fluidContainer"
+                                       type="radio"
+                                       class="btn-group"
+                                       default="0"
+                                       label="TPL_TRIUMF31_FLUID_LABEL"
+                                       description="TPL_TRIUMF31_FLUID_DESC"
+                >
+                    <option value="0">TPL_TRIUMF31_STATIC</option>
+                    <option value="1">TPL_TRIUMF31_FLUID</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,465 @@
+@import "bootstrap/bootstrap.less";
+@import "variables";
+
+body {
+    letter-spacing: 0.1px;
+    text-rendering: optimizelegibility;
+}
+
+#logo {
+    height: 70px;
+}
+
+header.object-visible #logo {
+    height: 50px;
+}
+
+.gradient_block {
+    background: rgba(0, 0, 0, 0) url("../media/gradient.jpg") no-repeat scroll center center / cover ;
+}
+
+.header-top-dropdown .nav, .header-top-dropdown nav {
+    float: left;
+}
+
+.header-top-dropdown .nav > li {
+    float: left;
+    display: block;
+}
+
+.header-top-dropdown .nav > li ul {
+    //display: none;
+}
+
+.header-top-dropdown .nav > li > a, .header-top-dropdown .nav > li > span {
+    padding: 8px 10px;
+    margin: 0;
+    font-size: 12px;
+    //color: #999;
+    color: white;
+    text-align: center;
+    min-width: 0;
+    background-color: transparent;
+    -moz-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-transform: none;
+    transition: all 0.2s ease-in-out 0s;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+.header-top-dropdown .nav > li > a.fa {
+    font-size: 19px;
+}
+
+
+.header-top-dropdown .nav > li > a:hover, .header-top-dropdown .nav > li > span:hover {
+    color: #e84c3d;
+    background-color: #fafafa;
+}
+
+.header-top-dropdown .nav > li > a i {
+    padding-right: 5px;
+    width: 15px;
+}
+
+li.dropdown > a > i {
+    display: none;
+}
+
+
+.image-box .item-image {
+    width: 100%;
+}
+
+.keenpt_plan {
+    margin: 30px 0;
+}
+
+.container .keenpt_style_basic .keenpt_plan .keenpt_features {
+    background-color: #ffeb65;
+}
+
+.container .keenpt_style_basic .keenpt_plan .keenpt_foot {
+    border-top: 2px solid #850a04;
+}
+
+.btn.dropdown-toggle {
+    min-width: 0;
+}
+
+.breadcrumb li .divider img {
+    display: inline;
+}
+
+#ymap {
+    min-height: 500px;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+.form-horizontal .control-label {
+    float: left;
+    min-width: 110px;
+    padding-top: 0px;
+}
+
+.form-horizontal .controls {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.form-horizontal .control-group {
+    width: 100%;
+    float: none;
+    clear: both;
+}
+
+#jform_contact_message, #jform_contact_emailmsg {
+    width: 500px;
+    clear: both;
+}
+
+.header-top-dropdown .dropdown-menu > li.active > a {
+    color: yellow;
+}
+
+.social-links li a em {
+    line-height: 44px;
+}
+
+.main-navigation .navbar-nav.navbar-right {
+    //float: right !important;
+}
+
+
+.header-top-dropdown .nav > li > a.fa.fa-vk:hover {
+    color: #507299;
+    background-color: #fafafa;
+}
+
+
+
+/* Links
+---------------------------------- */
+.mod-articles-category-title {
+    padding-right: 23px;
+    position: relative;
+    display: inline-block;
+    text-align: right;
+}
+.mod-articles-category-title:hover {
+    text-decoration: none;
+}
+.mod-articles-category-title:hover span {
+    text-decoration: underline;
+}
+.mod-articles-category-title:after {
+    content: "\f178";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 2px;
+}
+
+
+
+
+/* Info block
+----------------------------------*/
+.info {
+    list-style: none;
+    padding: 0;
+    float: left;
+    color: #ffffff;
+}
+.info li {
+    padding-bottom: 10px;
+}
+.info i {
+    padding-right: 15px;
+}
+.header-top .info {
+    padding: 8px 0 0 20px;
+    margin: 0;
+}
+.header-top .info li {
+    display: inline-block;
+    font-size: 13px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+.header-top .info li i {
+    font-size: 16px;
+    padding-right: 5px;
+    color: #ffffff;
+}
+
+
+.header-top-dropdown .dropdown > button {
+    color: #ffffff;
+}
+
+table.pricetable th, table.pricetable td {
+    padding: 0.3em 0.6em;
+}
+
+table.pricetable th {
+    background-color: #dcf0a5;
+    font-size: 1.0em;
+}
+
+table td.price {
+    background-color: #31ab01;
+    color: white;
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+table.dealers td {
+    border: 1px solid #000;
+}
+
+
+
+span.badge {
+    margin-left: 5px;
+}
+
+.item-page table {
+    width: 100%;
+}
+
+.item-page table th {
+    background-color: #dcf0a5;
+    font-size: 1.2em;
+    padding: 0.6em;
+}
+.item-page table th p {
+    margin: 0;
+}
+.item-page table td {
+    padding: 0.6em;
+    vertical-align: top;
+}
+
+
+.mega-menu .dropdown-menu {
+    left: -200px;
+    width: 1050px;
+}
+
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: white;
+}
+
+
+
+
+.pg-icon-detail a {
+    float: right;
+    margin: 0 3px;
+}
+.pg-csv-box {
+    height: auto;
+}
+
+
+.item-image img {
+    max-width: 250px;
+    margin: 0 10px;
+}
+
+
+.dropdown-menu > li > a.dropdown-toggle {
+    padding: 6px 15px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.dropdown-menu > li > a.dropdown-toggle:hover {
+    background-color: white;
+    padding: 6px 10px 6px 20px;
+}
+
+.dropdown-menu > li > a.dropdown-toggle:hover i {
+    padding-left: 0;
+}
+
+.greyback {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header-top .header-top-dropdown .dropdown-menu > li > a {
+    border-bottom: 1px solid #518b0b;
+}
+
+.margin3 {
+    margin: 3px;
+}
+
+.footer-content .ut-spectragram {
+    margin-top: 20px;
+}
+
+.footer-content .ut-spectragram .jg-photo-ct ul li {
+    padding: 5px !important;
+}
+
+.footer-content .ut-spectragram .jg-photo-ct ul li a img {
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+    border-radius: 5px;
+    opacity: 0.7;
+    transition-duration: .3s;
+}
+
+.footer-content .ut-spectragram .jg-photo-ct ul li a:hover img {
+    opacity: 1;
+}
+
+
+.content_rating img {
+    display: inline;
+}
+
+.content_rating p {
+    display: inline;
+}
+
+form.form-inline {
+    margin: 5px 0;
+}
+
+ul.tags.inline {
+    list-style: none;
+    padding: 0;
+}
+
+ul.tags.inline li {
+    margin: 3px 3px 5px 0;
+    display: inline;
+}
+
+div.pagination {
+    display: block;
+}
+
+div.pagination ul.pagination-list {
+    list-style: none;
+    padding: 0;
+}
+
+div.pagination ul.pagination-list li {
+    display: inline;
+}
+
+div.pagination ul.pagination-list li a {
+    .btn;
+    .btn-primary;
+    margin: 3px 5px 3px 0;
+}
+
+div.pagination ul.pagination-list li.active a {
+    .btn-danger;
+}
+
+div.pagination ul.pagination-list li.disabled a {
+    display: none;
+}
+
+#login-form .control-group {
+    margin-bottom: 5px;
+}
+
+.filters .nav-pills > li > a {
+    color: #000;
+}
+
+.box-style-2 h2 {
+    font-size: 16px;
+}
+
+
+.startprice {
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
+    margin-right: 10px;
+    background-color: #d22104;
+    border-bottom: 1px solid #9f1b06;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    padding: 5px 8px;
+    border-radius: 8px 0 0 8px;
+}
+
+.category-module .isotope-container.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+article.item-page dl.fields-container {
+    display: none;
+
+}
+
+
+
+@media screen and (max-width: 791px) {
+    .columns {
+        -moz-column-count: 3;
+        /* Firefox */
+        -webkit-column-count: 3;
+        /* Safari and Chrome */
+        column-count: 3;
+        height: 400px;
+        overflow-y: scroll;
+        scrollbar-face-color: white;
+    }
+
+    .columns::-webkit-scrollbar-thumb {
+        background-color: white;
+        scrollbar-face-color: white;
+    }
+    .dropdown-menu.columns > li > a {
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (min-width: 792px) {
+    .columns {
+        -moz-column-count: 4;
+        /* Firefox */
+        -webkit-column-count: 4;
+        /* Safari and Chrome */
+        column-count: 4;
+        width: 750px;
+        height: 500px;
+    }
+
+    .dropdown-menu.columns li a {
+        font-size: 12px;
+    }
+
+}
+
+.header-top-dropdown .dropdown-menu > li > a strong {
+    color: white;
+}

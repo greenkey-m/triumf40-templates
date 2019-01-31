@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="template" version="3.8" client="site" method="upgrade">
+    <name>Triumf38</name>
+    <version>3.8</version>
+    <creationDate>17.09.2018</creationDate>
+    <author>matt</author>
+    <authorEmail>info@greenkey.ru</authorEmail>
+    <copyright>All rights reserved</copyright>
+    <description>TPL_TRIUMF38_XML_DESCRIPTION</description>
+
+    <files>
+        <filename>component.php</filename>
+        <filename>error.php</filename>
+        <filename>favicon.ico</filename>
+        <filename>helper.php</filename>
+        <filename>index.php</filename>
+        <filename>LICENSE</filename>
+        <filename>offline.php</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_thumbnail.png</filename>
+        <folder>css</folder>
+        <folder>html</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>vendor</folder>
+    </files>
+
+    <positions>
+        <position>header</position>
+        <position>subheader-1</position>
+        <position>subheader-2</position>
+        <position>search</position>
+        <position>top</position>
+        <position>center</position>
+        <position>subcenter-1</position>
+        <position>subcenter-2</position>
+        <position>left</position>
+        <position>right</position>
+        <position>bottom</position>
+        <position>subfooter-1</position>
+        <position>subfooter-2</position>
+        <position>subfooter-3</position>
+        <position>subfooter-4</position>
+        <position>aside</position>
+        <position>footer</position>
+        <position>debug</position>
+    </positions>
+
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                <field name="templateColor" class="" type="color" default="#08C"
+                       label="TPL_TRIUMF38_COLOR_LABEL"
+                       description="TPL_TRIUMF38_COLOR_DESC"/>
+
+                <field name="templateBackgroundColor" class="" type="color" default="#F4F6F7"
+                       label="TPL_TRIUMF38_BACKGROUND_COLOR_LABEL"
+                       description="TPL_TRIUMF38_BACKGROUND_COLOR_DESC"/>
+
+                <field name="logoFile" class="" type="media" default=""
+                       label="TPL_TRIUMF38_LOGO_LABEL"
+                       description="TPL_TRIUMF38_LOGO_DESC"/>
+
+                <field name="sitetitle" type="text" default=""
+                       label="JGLOBAL_TITLE"
+                       description="JFIELD_ALT_PAGE_TITLE_LABEL"
+                       filter="string"/>
+
+                <field name="sitedescription" type="text" default=""
+                       label="JGLOBAL_DESCRIPTION"
+                       description="JGLOBAL_SUBHEADING_DESC"
+                       filter="string"/>
+
+                <field name="googleFont"
+                       type="radio"
+                       class="btn-group"
+                       default="1"
+                       label="TPL_TRIUMF38_FONT_LABEL"
+                       description="TPL_TRIUMF38_FONT_DESC"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="googleFontName" class="" type="text" default="Open+Sans"
+                       label="TPL_TRIUMF38_FONT_NAME_LABEL"
+                       description="TPL_TRIUMF38_FONT_NAME_DESC"/>
+
+                <field name="fluidContainer"
+                       type="radio"
+                       class="btn-group"
+                       default="0"
+                       label="TPL_TRIUMF38_FLUID_LABEL"
+                       description="TPL_TRIUMF38_FLUID_DESC"
+                >
+                    <option value="0">TPL_TRIUMF38_STATIC</option>
+                    <option value="1">TPL_TRIUMF38_FLUID</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
