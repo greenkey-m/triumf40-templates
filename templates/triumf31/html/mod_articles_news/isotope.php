@@ -33,7 +33,7 @@ defined('_JEXEC') or die;
 
                 <?php $images = json_decode($item->images); ?>
 
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 isotope-item <?php
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item <?php
                 if (!empty($item->tags->itemTags)) :
                     foreach ($item->tags->itemTags as $i => $tag) :
                         echo $tag->alias . ' ';
@@ -41,6 +41,15 @@ defined('_JEXEC') or die;
                 endif;
                 ?>margin-bottom-clear">
                     <div class="box-style-2 white-bg" itemscope itemtype="http://schema.org/Product">
+
+                        <?php //print_r($item->jcfields[1]->value);?>
+                        <?php //echo $item->beforeDisplayContent; ?>
+
+                        <div class="overlay-container">
+                            <a href="<?php echo $item->link; ?>">
+                                <img src="<?php echo $images->image_intro; ?>" alt="Теплицы Триумф <?php echo $item->title; ?>" itemprop="image" />
+                            </a>
+                        </div>
 
                         <?php if ($params->get('link_titles') == 1) : ?>
                             <h2 class="title" itemprop="name">
@@ -52,49 +61,41 @@ defined('_JEXEC') or die;
                             <h2 class="title" itemprop="name"><?php echo $item->jcfields[1]->value; ?></h2>
                         <?php endif; ?>
 
-                        <?php //print_r($item->jcfields[1]->value);?>
-                        <?php //echo $item->beforeDisplayContent; ?>
-
-
-                        <div class="overlay-container">
-                            <img src="<?php echo $images->image_intro; ?>" alt="Теплицы Триумф <?php echo $item->title; ?>" itemprop="image" />
-                            <a href="<?php echo $item->link; ?>" class="overlay small">
-                                <i class="fa fa-plus"></i>
-
-                                <?php if ($params->get('show_author')) : ?>
-                                    <span class="mod-articles-category-writtenby">
+                        <?php if ($params->get('show_author')) : ?>
+                            <span class="mod-articles-category-writtenby">
                                         <?php echo $item->displayAuthorName; ?>
                                     </span>
-                                <?php endif; ?>
+                        <?php endif; ?>
 
-                                <?php if ($item->displayDate) : ?>
-                                    <span class="mod-articles-category-date">
+                        <?php if ($item->displayDate) : ?>
+                            <span class="mod-articles-category-date">
                                         <?php echo $item->displayDate; ?>
                                     </span>
-                                <?php endif; ?>
+                        <?php endif; ?>
 
-                                <?php if ($params->get('show_introtext', '1')) : ?>
-                                    <div class="mod-articles-category-introtext" itemprop="description">
-                                        <?php echo JHtml::_('string.truncate', $item->introtext, 200); ?>
-                                    </div>
-                                <?php endif; ?>
+                        <?php if ($params->get('show_introtext', '1')) : ?>
+                            <div class="mod-articles-category-introtext" itemprop="description">
+                                <?php echo JHtml::_('string.truncate', $item->introtext, 200); ?>
+                            </div>
+                        <?php endif; ?>
 
 
-                                <?php if ($params->get('show_readmore')) : ?>
-                                    <p class="mod-articles-category-readmore">
-                                        <a class="btn-default btn <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
-                                            Открыть
-                                        </a>
-                                    </p>
-                                <?php endif; ?>
-
-                            </a>
-                        </div>
+                        <?php if ($params->get('show_readmore')) : ?>
+                            <p class="mod-articles-category-readmore">
+                                <a class="btn-default btn <?php echo $item->active; ?>" href="<?php echo $item->link; ?>">
+                                    Открыть
+                                </a>
+                            </p>
+                        <?php endif; ?>
 
                         <div class="startprice" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                             <span itemprop="price"><?php echo $item->jcfields[2]->value; ?></span>
                             <meta itemprop="priceCurrency" content="RUB" />
                         </div>
+
+                        <a href="<?php echo $item->link; ?>" class="ordering">
+                            Заказать
+                        </a>
 
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 @import "bootstrap/bootstrap.less";
 @import "variables.less";
 
+@import "checkbox.less";
+
 body {
     letter-spacing: 0.1px;
     text-rendering: optimizelegibility;
@@ -204,6 +206,10 @@ li.dropdown > a > i {
     color: #ffffff;
 }
 
+table.pricetable {
+    margin-bottom: 10px;
+}
+
 table.pricetable th, table.pricetable td {
     padding: 0.3em 0.6em;
 }
@@ -213,12 +219,49 @@ table.pricetable th {
     font-size: 1.0em;
 }
 
+table.pricetable th span {
+    display: none;
+}
+
+table tr td .flexcon{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 table td.price {
-    background-color: #31ab01;
-    color: white;
     font-size: 1.0em;
     font-weight: bold;
+    white-space: nowrap;
 }
+
+table td div.checkbox {
+    visibility: hidden;
+}
+
+table.pricetable tr:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+table.pricetable tr.selected {
+    background: linear-gradient(to top, #f59f03, #efbb08);
+}
+
+table.pricetable tr.selected td div.checkbox {
+    visibility: visible;
+}
+
+@media screen and (max-width: 600px) {
+    table.pricetable th strong {
+        display: none;
+    }
+
+    table.pricetable th span {
+        display: inline;
+    }
+}
+
 
 table.dealers td {
     border: 1px solid #000;
@@ -398,7 +441,7 @@ div.pagination ul.pagination-list li.disabled a {
 
 .startprice {
     position: absolute;
-    bottom: 20px;
+    top: 50px;
     right: 0px;
     margin-right: 10px;
     background-color: #d22104;
@@ -441,6 +484,11 @@ article.item-page dl.fields-container {
     .dropdown-menu.columns > li > a {
         font-size: 0.8em;
     }
+
+    .pricetable {
+        font-size: .9rem;
+    }
+
 }
 
 @media screen and (min-width: 792px) {
@@ -457,9 +505,498 @@ article.item-page dl.fields-container {
     .dropdown-menu.columns li a {
         font-size: 12px;
     }
-
 }
 
 .header-top-dropdown .dropdown-menu > li > a strong {
     color: white;
+}
+
+
+.isotope-item h2 {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.isotope-item .mod-articles-category-date {
+    display: none;
+}
+
+.isotope-item .mod-articles-category-introtext {
+    margin: 0 10px;
+    height: 60px;
+}
+
+.isotope-item .mod-articles-category-introtext p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+a.ordering {
+    display: block;
+    width: 100%;
+    background: #d22104;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 0;
+    border: 1px solid #d22104;
+}
+
+a.ordering:hover {
+    background: white;
+    color: #d22104;
+    border: 1px solid #d22104;
+}
+
+.overlay-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+
+.item {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Slider */
+#slider{
+    width:100%;
+    height:600px;
+    position:relative;
+    overflow:hidden;
+}
+
+@media screen and (max-width: 791px) {
+    #slider{
+        height:400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #slider{
+        height:300px;
+    }
+}
+
+
+@keyframes load{
+    from{left:-100%;}
+    to{left:0;}
+}
+.slides{
+    width:400%;
+    height:100%;
+    position:relative;
+    -webkit-animation:slide 30s infinite;
+    -moz-animation:slide 30s infinite;
+    animation:slide 30s infinite;
+}
+.slider{
+    width:25%;
+    height:100%;
+    float:left;
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+}
+.slides .image{
+    width:100%;
+    height:100%;
+}
+.slides .images img{
+    width: auto;
+    max-width: none;
+    height: 100%;
+}
+
+/* Legend */
+.slides .legend{
+    border:500px solid transparent;
+    border-left:800px solid rgba(52, 73, 94, .7);
+    border-bottom:0;
+    position:absolute;
+    bottom:0;
+}
+
+/* Contents */
+.slides .content{
+    width:100%;
+    height:100%;
+    position:absolute;
+    overflow:hidden;
+}
+.slides .content-txt{
+    width:400px;
+    height:100%;
+    float:left;
+    position:relative;
+    top:0px;
+    margin-left: -30px;
+    padding: 40px;
+    background-color: rgba(52, 73, 94, .7);
+    -webkit-animation:content-s 7.5s infinite;
+    -moz-animation:content-s 7.5s infinite;
+    animation:content-s 7.5s infinite;
+    color: white;
+}
+.slides .content-txt h1{
+    font-family:Arial;
+    text-transform:uppercase;
+    font-size:24px;
+    color:#fff;
+    text-align:left;
+    margin-left:30px;
+    padding-bottom:10px;
+}
+.slides .content-txt h2{
+    font-family:arial;
+    font-weight:normal;
+    font-size:14px;
+    font-style:italic;
+    color:#fff;
+    text-align:left;
+    margin-left:30px;
+}
+
+/* Switch */
+.switch{
+    width:120px;
+    height:10px;
+    position:absolute;
+    bottom:50px;
+    z-index:99;
+    left:30px;
+}
+.switch > ul{
+    list-style:none;
+}
+.switch > ul > li{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#333;
+    float:left;
+    margin-right:5px;
+    cursor:pointer;
+}
+.switch ul{
+    overflow:hidden;
+}
+.on{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#f39c12;
+    position:relative;
+    -webkit-animation:on 30s infinite;
+    -moz-animation:on 30s infinite;
+    animation:on 30s infinite;
+}
+
+/* Animation */
+@-webkit-keyframes slide{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:-100%;
+    }
+    46%{
+        margin-left:-100%;
+    }
+    50%{
+        margin-left:-200%;
+    }
+    71%{
+        margin-left:-200%;
+    }
+    75%{
+        margin-left:-300%;
+    }
+    96%{
+        margin-left:-300%;
+    }
+}
+@-moz-keyframes slide{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:-100%;
+    }
+    46%{
+        margin-left:-100%;
+    }
+    50%{
+        margin-left:-200%;
+    }
+    71%{
+        margin-left:-200%;
+    }
+    75%{
+        margin-left:-300%;
+    }
+    96%{
+        margin-left:-300%;
+    }
+}
+@keyframes slide{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:-100%;
+    }
+    46%{
+        margin-left:-100%;
+    }
+    50%{
+        margin-left:-200%;
+    }
+    71%{
+        margin-left:-200%;
+    }
+    75%{
+        margin-left:-300%;
+    }
+    96%{
+        margin-left:-300%;
+    }
+}
+
+@-webkit-keyframes content-s{
+    0%{left:-420px;}
+    10%{left:0px;}
+    30%{left:0px;}
+    40%{left:0px;}
+    50%{left:0px;}
+    60%{left:0px;}
+    70%{left:0;}
+    80%{left:-420px;}
+    90%{left:-420px;}
+    100%{left:-420px;}
+}
+@-moz-keyframes content-s{
+    0%{left:-420px;}
+    10%{left:0px;}
+    30%{left:0px;}
+    40%{left:0px;}
+    50%{left:0px;}
+    60%{left:0px;}
+    70%{left:0;}
+    80%{left:-420px;}
+    90%{left:-420px;}
+    100%{left:-420px;}
+}
+@keyframes content-s{
+    0%{left:-420px;}
+    10%{left:20px;}
+    15%{left:0px;}
+    30%{left:0px;}
+    40%{left:0px;}
+    50%{left:0px;}
+    60%{left:0px;}
+    70%{left:0;}
+    80%{left:-420px;}
+    90%{left:-420px;}
+    100%{left:-420px;}
+}
+
+@-webkit-keyframes on{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:15px;
+    }
+    46%{
+        margin-left:15px;
+    }
+    50%{
+        margin-left:30px;
+    }
+    71%{
+        margin-left:30px;
+    }
+    75%{
+        margin-left:45px;
+    }
+    96%{
+        margin-left:45px;
+    }
+}
+
+@-moz-keyframes on{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:15px;
+    }
+    46%{
+        margin-left:15px;
+    }
+    50%{
+        margin-left:30px;
+    }
+    71%{
+        margin-left:30px;
+    }
+    75%{
+        margin-left:45px;
+    }
+    96%{
+        margin-left:45px;
+    }
+}
+
+@keyframes on{
+    0%,100%{
+        margin-left:0%;
+    }
+    21%{
+        margin-left:0%;
+    }
+    25%{
+        margin-left:15px;
+    }
+    46%{
+        margin-left:15px;
+    }
+    50%{
+        margin-left:30px;
+    }
+    71%{
+        margin-left:30px;
+    }
+    75%{
+        margin-left:45px;
+    }
+    96%{
+        margin-left:45px;
+    }
+}
+
+
+
+
+
+
+
+
+.price_calc .form-group-lg .control-label {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: right;
+}
+
+.price_calc .form-group-lg .control-label span {
+    color: #449d44;
+}
+
+.price_calc select, .price_calc input, .price_calc .form-control[readonly] {
+    min-width: 100px;
+    border: 1px solid green;
+    margin: 0px;
+    margin-top: 0px;
+    cursor: default;
+}
+
+.price_calc label.check {
+    padding: 12px 16px 16px 16px;
+    margin-top: 4px;
+    border-radius: 6px;
+}
+
+.price_calc .form-control.result, .price_calc .form-control.result[readonly], .price_calc .form-control.result::-moz-placeholder {
+    color: white;
+    background-color: #449d44;
+}
+
+
+
+
+.switch6 {  max-width: 17em;  margin: 0 auto; }
+.switch6-light > span, .switch-toggle > span {  color: #000000; }
+.switch6-light span span, .switch6-light label, .switch-toggle span span, .switch-toggle label {  color: #2b2b2b; }
+
+.switch-toggle a,
+.switch6-light span span { display: none; }
+
+.switch6-light { display: block; height: 45px; position: relative; overflow: visible; padding: 0px; margin-left:0px; }
+.switch6-light * { box-sizing: border-box; }
+.switch6-light a { display: block; transition: all 0.3s ease-out 0s; }
+
+.switch6-light label,
+.switch6-light > span { line-height: 45px; vertical-align: middle; font-size: 16px;}
+
+.switch6-light label {font-weight: 500; margin-bottom: px; max-width: 100%;}
+
+.switch6-light input:focus ~ a, .switch6-light input:focus + label { outline: 1px dotted rgb(136, 136, 136); }
+.switch6-light input { position: absolute; opacity: 0; z-index: 5; }
+.switch6-light input:checked ~ a { right: 0%; }
+.switch6-light > span { position: absolute; left: -100px; width: 100%; margin: 0px; padding-right: 100px; text-align: left; }
+.switch6-light > span span { position: absolute; top: 0px; left: 0px; z-index: 5; display: block; width: 50%; margin-left: 100px; text-align: center; }
+.switch6-light > span span:last-child { left: 50%; }
+.switch6-light a {
+    position: absolute;
+    right: 50%;
+    top: 0px;
+    -index: 4;
+    display: block;
+    width: 50%;
+    min-width: auto;
+    height: 100%;
+    padding: 0px;
+    background-color: #f59f03;
+    background: linear-gradient(to top, #f59f03, #efbb08);
+    border-radius: 6px;
+    border: 2px solid #e5680c;
+}
+
+
+
+
+
+
+
+
+
+
+
+.price_calc .form-group-lg .control-label.big {
+    color: black;
+    font-size: 2.6rem;
+    font-weight: bold;
 }
