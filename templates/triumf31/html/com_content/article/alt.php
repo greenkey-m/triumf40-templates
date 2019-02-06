@@ -28,86 +28,256 @@ JHtml::_('behavior.caption');
     <meta itemprop="inLanguage"
           content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>"/>
 
-    <div id="slider">
-        <div class="slides">
+    <div class="row">
+        <div class="col-xs-8">
 
-            <!-- First slide -->
-            <div class="slider">
-                <div class="content">
-                    <div class="content-txt">
-                        <h1> Теплица Атлант </h1>
-                        <p>Изготавливается из оцинкованной квадратной трубы сечением 30х30 мм, с толщиной стенки 1
-                            мм.</p>
-                        <p>Ширина теплицы: 3 м.</p>
-                        <p>Высота теплицы: 2,1 м.</p>
-                    </div>
-                </div>
-                <div class="images">
-                    <img src="/images/alter.jpg">
-                </div>
-            </div>
+            <div id="slider">
+                <div class="slides">
 
-            <!-- Second slide -->
-            <div class="slider">
-                <div class="content">
-                    <div class="content-txt">
-                        <h1> Теплица Атлант </h1>
-                        <p>В комплект входит: 2 двери, 2 форточки, поликарбонат 4мм, оцинкованные метизы, ручки</p>
-                        <p>Дуги теплицы цельные арочного вида, двери и форточки вмонтированы.</p>
+                    <!-- First slide -->
+                    <div class="slider">
+                        <div class="content">
+                            <div class="content-txt">
+                                <h1> Теплица Атлант </h1>
+                                <p>Изготавливается из оцинкованной квадратной трубы сечением 30х30 мм, с толщиной стенки
+                                    1
+                                    мм.</p>
+                                <p>Ширина теплицы: 3 м.</p>
+                                <p>Высота теплицы: 2,1 м.</p>
+                            </div>
+                        </div>
+                        <div class="images">
+                            <img src="/images/alter.jpg">
+                        </div>
                     </div>
-                </div>
-                <div class="images">
-                    <img src="/images/alter.jpg">
-                </div>
-            </div>
 
-            <!-- Third slide -->
-            <div class="slider">
-                <div class="content">
-                    <div class="content-txt">
-                        <h1> Теплица Атлант </h1>
-                        <p>В данной модели теплицы с шагом 1 м, желательно устанавливать подпорки на зиму или приобрести
-                            теплицу с шагом 65 см.</p>
+                    <!-- Second slide -->
+                    <div class="slider">
+                        <div class="content">
+                            <div class="content-txt">
+                                <h1> Теплица Атлант </h1>
+                                <p>В комплект входит: 2 двери, 2 форточки, поликарбонат 4мм, оцинкованные метизы,
+                                    ручки</p>
+                                <p>Дуги теплицы цельные арочного вида, двери и форточки вмонтированы.</p>
+                            </div>
+                        </div>
+                        <div class="images">
+                            <img src="/images/alter.jpg">
+                        </div>
                     </div>
-                </div>
-                <div class="images">
-                    <img src="/images/alter.jpg">
-                </div>
-            </div>
 
-            <!-- Fourth slide -->
-            <div class="slider">
-                <div class="legend"></div>
-                <div class="content">
-                    <div class="content-txt">
-                        <h1> Теплица Атлант </h1>
-                        <h2> Your description </h2>
+                    <!-- Third slide -->
+                    <div class="slider">
+                        <div class="content">
+                            <div class="content-txt">
+                                <h1> Теплица Атлант </h1>
+                                <p>В данной модели теплицы с шагом 1 м, желательно устанавливать подпорки на зиму или
+                                    приобрести
+                                    теплицу с шагом 65 см.</p>
+                            </div>
+                        </div>
+                        <div class="images">
+                            <img src="/images/alter.jpg">
+                        </div>
                     </div>
+
+                    <!-- Fourth slide -->
+                    <div class="slider">
+                        <div class="legend"></div>
+                        <div class="content">
+                            <div class="content-txt">
+                                <h1> Теплица Атлант </h1>
+                                <h2> Your description </h2>
+                            </div>
+                        </div>
+                        <div class="images">
+                            <img src="/images/alter.jpg">
+                        </div>
+                    </div>
+
                 </div>
-                <div class="images">
-                    <img src="/images/alter.jpg">
+
+                <div class="switch">
+                    <ul>
+                        <li>
+                            <div class="on"></div>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
+
             </div>
 
         </div>
 
-        <div class="switch">
-            <ul>
-                <li>
-                    <div class="on"></div>
-                </li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        <div class="col-xs-4">
+
+            <form class="form-horizontal form-order">
+
+                <div class="form-group">
+                    <table class="table table-condense sizing" role="group" aria-label="...">
+                        <tbody>
+                        <tr>
+                            <td>Шаг</td>
+                            <td>2 м.</td>
+                            <td>4 м.</td>
+                            <td>6 м.</td>
+                            <td>8 м.</td>
+                        </tr>
+                        <tr>
+                            <td nowrap>100 см</td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                        </tr>
+                        <tr>
+                            <td>65 см</td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Button Drop Down -->
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Длина теплицы</label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="buttondropdown" name="buttondropdown" class="form-control" placeholder="метров"
+                                   type="text">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" style="height: 40px" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">4</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Поликарбонат</label>
+                    <div class="col-md-6 flexcon">
+                        <div>В комплекте</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Двери и форточки</label>
+                    <div class="col-md-6 flexcon">
+                        <div>В комплекте</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Шаг 100см</label>
+                    <div class="col-md-6 flexcon">
+                        <div class="radio">
+                            <label style="font-size: 1.5em">
+                                <input type="radio" name="o5" value="" checked>
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>10 900 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Шаг 65см</label>
+                    <div class="col-md-6 flexcon">
+                        <div class="radio">
+                            <label style="font-size: 1.5em">
+                                <input type="radio" name="o5" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>10 900 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Грунтозацепы</label>
+                    <div class="col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>450 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label" for="buttondropdown">Монтаж</label>
+                    <div class="col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>4 000 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery" class="col-md-6 control-label">Выберите доставку</label>
+                    <div class="col-md-6">
+                        <div class="input-group" style="">
+                            <input type="text" class="form-control selectedit" aria-label="">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-success dropdown-toggle" style="height: 40px"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Самовывоз</a></li>
+                                    <li><a href="#">Обнинск</a></li>
+                                    <li><a href="#">Малоярославец</a></li>
+                                    <li><a href="#">Людиново</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+
+                    </div>
+                </div>
+
+                <!--поликарбонат
+                // форточки и двери -->
+
+                <div class="form-group">
+                    <span class="col-md-6 big"></span>
+                    <span class="col-md-6 big">15 200 руб.</span>
+                </div>
+
+                <div class="form-group">
+                    <span class="col-md-6 big"></span>
+                    <div class="col-md-6">
+                        <a href="#contact" style="padding: 15px; width:100%; min-width:auto;"
+                           class="buy scroll btn btn-lg btn-danger">Заказать</a>
+                    </div>
+                </div>
+
+            </form>
+
+
         </div>
 
     </div>
 
-    <form class="form-horizontal price_calc" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <form class="form-horizontal price_calc form-inline" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-        <p>Выберите длину теплицы и шаг между дугами (100 см или 65 см).</p>
-
+        <div class="table-responsive">
         <table border="1" class="pricetable" style="width: 100%;" cellspacing="0" cellpadding="0">
             <thead>
             <tr>
@@ -120,45 +290,15 @@ JHtml::_('behavior.caption');
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr class="selectable">
                 <td>2 м</td>
                 <td>6 м<sup>2</sup></td>
-                <td class="price">
-                    <div class="flexcon">
-                        <div>10 900 руб.</div>
-                        <div class="checkbox">
-                            <label style="font-size: 1.5em">
-                                <input type="checkbox" value="" checked>
-                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                            </label>
-                        </div>
-                    </div>
-                </td>
+                <td class="price">10 900 руб.</td>
                 <td>&nbsp;</td>
-                <td>
-                    <div class="flexcon">
-                    <div>450 руб.</div>
-                    <div class="checkbox">
-                        <label style="font-size: 1.5em">
-                            <input type="checkbox" value="">
-                            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                        </label>
-                    </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="flexcon">
-                    <div>4 000 руб.</div>
-                    <div class="checkbox">
-                        <label style="font-size: 1.5em">
-                            <input type="checkbox" value="">
-                            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                        </label>
-                    </div>
-                    </div>
-                </td>
+                <td>450 руб.</td>
+                <td>4 000 руб.</td>
             </tr>
-            <tr>
+            <tr class="selectable">
                 <td>4 м</td>
                 <td>12 м<sup>2</sup></td>
                 <td class="price">14 900 руб.</td>
@@ -166,7 +306,7 @@ JHtml::_('behavior.caption');
                 <td>450 руб.</td>
                 <td>4 000 руб.</td>
             </tr>
-            <tr>
+            <tr class="selectable">
                 <td>6 м</td>
                 <td>18 м<sup>2</sup></td>
                 <td class="price">18 650 руб.</td>
@@ -174,7 +314,7 @@ JHtml::_('behavior.caption');
                 <td>550 руб.</td>
                 <td>4 500 руб.</td>
             </tr>
-            <tr>
+            <tr class="selectable">
                 <td>8 м</td>
                 <td>24 м<sup>2</sup></td>
                 <td class="price">22 450 руб.</td>
@@ -192,6 +332,7 @@ JHtml::_('behavior.caption');
             </tr>
             </tbody>
         </table>
+        </div>
 
         <div class="row">
             <div class="col-xs-12 col-sm-6">
@@ -199,60 +340,6 @@ JHtml::_('behavior.caption');
             </div>
 
             <div class="col-xs-12 col-sm-6">
-
-                <div class="form-group form-group-lg" style="display: none;">
-                    <label for="stepwitch_n" class="col-xs-6 col-sm-6 col-md-8 control-label">Шаг между дугами</label>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <label class="switch6-light">
-                            <input type="checkbox" class="stepwitch" id="stepwitch_n">
-                            <span>
-                                                <span>100 см</span>
-                                                <span>65 см</span>
-                                            </span>
-                            <a class="btn btn-primary"></a>
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group form-group-lg">
-                    <label for="length_n" class="col-xs-6 col-sm-6 col-md-8 control-label">Выберите доставку</label>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <select class="form-control length" name="length_n" id="length_n">
-                            <option value="10900x11300x4000x2">Самовывоз</option>
-                            <option value="14500x15300x4000x4">Малоярославец</option>
-                            <option value="18100x19300x4500x6">Обнинск</option>
-                            <option value="21700x23300x5000x8">Боровск</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group form-group-lg" style="display: none;">
-                    <label class="col-xs-6 col-sm-6 col-md-8 control-label formontage" id="formontage_n"
-                           for="montage_n">Монтаж</label>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <div class="checkbox">
-                            <label class="checkbox-bootstrap checkbox-lg">
-                                <input type="checkbox">
-                                <span class="checkbox-placeholder"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group form-group-lg" style="display: none;">
-                    <label for="price_n" class="col-xs-6 col-sm-6 col-md-8 control-label">Цена теплицы</label>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <input id="price_n" class="form-control result price" type="text" placeholder="10 900 руб."
-                               readonly itemprop="price"/>
-                        <meta itemprop="price" content="10900.00"/>
-                        <meta itemprop="priceCurrency" content="RUB"/>
-                    </div>
-                </div>
-                <div class="form-group form-group-lg">
-                    <link itemprop="availability" href="http://schema.org/InStock"/>
-                    <span class="col-xs-6 col-sm-6 col-md-8 control-label big">15 200 руб.</span>
-                    <div class="col-xs-6 col-sm-6 col-md-4">
-                        <a href="#contact" style="padding: 15px; width:100%; min-width:auto;"
-                           class="buy scroll btn btn-lg btn-danger">Заказать</a>
-                    </div>
-                </div>
 
             </div>
 

@@ -18,10 +18,23 @@ jQuery(document).ready(function () {
         }
     });
 
-    jQuery('table.pricetable tr').on('click', function () {
-        jQuery('table.pricetable tr').removeClass('selected');
-        jQuery(this).toggleClass('selected');
-    })
+    jQuery('table.pricetable tr.selectable').on('click', function () {
+        //jQuery('table.pricetable tr').removeClass('selected');
+        //jQuery(this).toggleClass('selected');
+        console.log("click");
+    });
 
+    jQuery('.btn.sizeprice').on('click', function () {
+        jQuery('.btn.sizeprice').removeClass('selected');
+        jQuery(this).toggleClass('selected');
+        console.log("click");
+    });
+
+
+    jQuery('.dropdown-menu a').click(function() {
+        console.log(jQuery(this).attr('data-value'));
+        jQuery(this).closest('.dropdown').find('input.countrycode')
+            .val('(' + jQuery(this).attr('data-value') + ')');
+    });
 });
 
