@@ -234,7 +234,7 @@ table.pricetable th span {
 .flexcon {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100%;
 }
 
@@ -591,6 +591,7 @@ a.ordering:hover {
     height:600px;
     position:relative;
     overflow:hidden;
+    margin-bottom: 15px;
 }
 
 @media screen and (max-width: 791px) {
@@ -614,9 +615,10 @@ a.ordering:hover {
     width:400%;
     height:100%;
     position:relative;
-    -webkit-animation:slide 30s infinite;
-    -moz-animation:slide 30s infinite;
-    animation:slide 30s infinite;
+    transition: all .3s ease-in-out;
+    //-webkit-animation:slide 30s infinite;
+    //-moz-animation:slide 30s infinite;
+    //animation:slide 30s infinite;
 }
 .slider{
     width:25%;
@@ -625,6 +627,12 @@ a.ordering:hover {
     position:relative;
     z-index:1;
     overflow:hidden;
+}
+.slider .content {
+    display: none;
+}
+.slider.active .content {
+    display: block;
 }
 .slides .image{
     width:100%;
@@ -653,17 +661,19 @@ a.ordering:hover {
     overflow:hidden;
 }
 .slides .content-txt{
-    width:400px;
+    width:40%;
+    min-width: 300px;
     height:100%;
     float:left;
     position:relative;
     top:0px;
+    left:-420px;
     margin-left: -30px;
     padding: 40px;
     background-color: rgba(52, 73, 94, .7);
-    -webkit-animation:content-s 7.5s infinite;
-    -moz-animation:content-s 7.5s infinite;
-    animation:content-s 7.5s infinite;
+    -webkit-animation:content-s 7.5s;
+    -moz-animation:content-s 7.5s;
+    animation:content-s 7.5s;
     color: white;
 }
 .slides .content-txt h1{
@@ -1004,6 +1014,9 @@ a.ordering:hover {
 
 
 
+.form-group {
+    margin-bottom: 7px;
+}
 
 
 .sizing {
@@ -1031,4 +1044,41 @@ a.ordering:hover {
     color: black;
     font-size: 2.6rem;
     font-weight: bold;
+}
+
+
+
+
+
+
+.thumbs {
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    z-index: 10;
+}
+
+.thumbs a img {
+    width: 100px;
+    height: 70px;
+    margin: 5px;
+    border: 1px solid white;
+    opacity: .7;
+}
+
+.thumbs a:hover img {
+    opacity: 1;
+}
+
+
+form#contact-form {
+    margin: 0;
+}
+
+.d-none {
+    display: none;
 }

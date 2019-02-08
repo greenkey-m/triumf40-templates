@@ -29,13 +29,13 @@ JHtml::_('behavior.caption');
           content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>"/>
 
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-12 col-sm-12 col-md-8">
 
             <div id="slider">
                 <div class="slides">
 
                     <!-- First slide -->
-                    <div class="slider">
+                    <div id="slide1" class="slider active">
                         <div class="content">
                             <div class="content-txt">
                                 <h1> Теплица Атлант </h1>
@@ -52,22 +52,14 @@ JHtml::_('behavior.caption');
                     </div>
 
                     <!-- Second slide -->
-                    <div class="slider">
-                        <div class="content">
-                            <div class="content-txt">
-                                <h1> Теплица Атлант </h1>
-                                <p>В комплект входит: 2 двери, 2 форточки, поликарбонат 4мм, оцинкованные метизы,
-                                    ручки</p>
-                                <p>Дуги теплицы цельные арочного вида, двери и форточки вмонтированы.</p>
-                            </div>
-                        </div>
+                    <div id="slide2" class="slider">
                         <div class="images">
                             <img src="/images/alter.jpg">
                         </div>
                     </div>
 
                     <!-- Third slide -->
-                    <div class="slider">
+                    <div id="slide3" class="slider">
                         <div class="content">
                             <div class="content-txt">
                                 <h1> Теплица Атлант </h1>
@@ -82,8 +74,8 @@ JHtml::_('behavior.caption');
                     </div>
 
                     <!-- Fourth slide -->
-                    <div class="slider">
-                        <div class="legend"></div>
+                    <div id="slide4" class="slider">
+                        <div class="legend" style="display: none;"></div>
                         <div class="content">
                             <div class="content-txt">
                                 <h1> Теплица Атлант </h1>
@@ -97,7 +89,7 @@ JHtml::_('behavior.caption');
 
                 </div>
 
-                <div class="switch">
+                <div class="switch" style="display: none;">
                     <ul>
                         <li>
                             <div class="on"></div>
@@ -108,15 +100,23 @@ JHtml::_('behavior.caption');
                     </ul>
                 </div>
 
+                <div class="thumbs">
+                    <a href="" data-slide="1"><img src="/images/alter.jpg" /></a>
+                    <a href="" data-slide="2"><img src="/images/alter.jpg" /></a>
+                    <a href="" data-slide="3"><img src="/images/alter.jpg" /></a>
+                    <a href="" data-slide="4"><img src="/images/alter.jpg" /></a>
+                </div>
+
+
             </div>
 
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-xs-12 col-sm-12 col-md-4">
 
             <form class="form-horizontal form-order">
 
-                <div class="form-group">
+                <div class="form-group" style="display:none;">
                     <table class="table table-condense sizing" role="group" aria-label="...">
                         <tbody>
                         <tr>
@@ -145,9 +145,9 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <!-- Button Drop Down -->
-                <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Длина теплицы</label>
-                    <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Длина теплицы</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6">
                         <div class="input-group">
                             <input id="buttondropdown" name="buttondropdown" class="form-control" placeholder="метров"
                                    type="text">
@@ -166,21 +166,21 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Поликарбонат</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Поликарбонат с UV</label>
+                    <div class="col-xs-6 col-sm-4 col-xs-4 col-md-6 flexcon">
                         <div>В комплекте</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Двери и форточки</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Двери и форточки</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div>В комплекте</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Шаг 100см</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Шаг 100см</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="radio">
                             <label style="font-size: 1.5em">
                                 <input type="radio" name="o5" value="" checked>
@@ -192,8 +192,8 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Шаг 65см</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Шаг 65см</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="radio">
                             <label style="font-size: 1.5em">
                                 <input type="radio" name="o5" value="">
@@ -205,8 +205,8 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Грунтозацепы</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Грунтозацепы</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
                                 <input type="checkbox" value="">
@@ -218,8 +218,48 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label" for="buttondropdown">Монтаж</label>
-                    <div class="col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Брус</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>1500 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Форточка</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>1500 руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Перегородка</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div>1500 руб.</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Монтаж</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
                                 <input type="checkbox" value="">
@@ -231,8 +271,8 @@ JHtml::_('behavior.caption');
                 </div>
 
                 <div class="form-group">
-                    <label for="delivery" class="col-md-6 control-label">Выберите доставку</label>
-                    <div class="col-md-6">
+                    <label for="delivery" class="col-xs-6 col-sm-8 col-md-6 control-label">Выберите доставку</label>
+                    <div class="col-xs-6 col-sm-4 col-md-6">
                         <div class="input-group" style="">
                             <input type="text" class="form-control selectedit" aria-label="">
                             <div class="input-group-btn">
@@ -256,20 +296,111 @@ JHtml::_('behavior.caption');
                 // форточки и двери -->
 
                 <div class="form-group">
-                    <span class="col-md-6 big"></span>
-                    <span class="col-md-6 big">15 200 руб.</span>
+                    <span class="col-xs-6 col-sm-8 col-md-6 big"></span>
+                    <span class="col-xs-6 col-sm-4 col-md-6 big">15 200 руб.</span>
                 </div>
 
                 <div class="form-group">
-                    <span class="col-md-6 big"></span>
-                    <div class="col-md-6">
-                        <a href="#contact" style="padding: 15px; width:100%; min-width:auto;"
-                           class="buy scroll btn btn-lg btn-danger">Заказать</a>
+                    <span class="col-xs-6 col-sm-8 col-md-6 big"></span>
+                    <div class="col-xs-6 col-sm-4 col-md-6">
+                        <button type="button" class="buy scroll btn btn-lg btn-danger" style="padding: 15px; width:100%; min-width:auto;" data-toggle="modal" data-target="#myModal">
+                            Заказать
+                        </button>
+
                     </div>
                 </div>
 
             </form>
 
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Заказ теплицы</h4>
+                        </div>
+
+                        <form id="contact-form" method="post" action="/templates/triumf31/code/recaptcha/contact.php" role="form">
+
+                        <div class="modal-body">
+
+                                <div class="messages"></div>
+
+                                <div class="controls">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_name">Firstname *</label>
+                                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_lastname">Lastname *</label>
+                                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_email">Email *</label>
+                                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_phone">Phone</label>
+                                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_message">Message *</label>
+                                                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="g-recaptcha" data-sitekey="6LeoxAQTAAAAAHVGSaz-W5qglWgyS64yEFY3JbmM" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                                                <input class="form-control hidden" data-recaptcha="true" required data-error="Please complete the Captcha">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-muted"><strong>*</strong> These fields are required. Contact form template by <a href="https://bootstrapious.com/p/bootstrap-recaptcha" target="_blank">Bootstrapious</a>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            <input type="submit" class="btn btn-success btn-send" value="Отправить">
+                        </div>
+                        </form>
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <script src="/templates/triumf31/code/recaptcha/validator.js"></script>
+                        <script src="/templates/triumf31/code/recaptcha/contact.js"></script>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
 

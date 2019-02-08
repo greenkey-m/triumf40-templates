@@ -36,5 +36,15 @@ jQuery(document).ready(function () {
         jQuery(this).closest('.dropdown').find('input.countrycode')
             .val('(' + jQuery(this).attr('data-value') + ')');
     });
+
+
+    jQuery('.thumbs a').on('click', function (e) {
+        e.preventDefault();
+        let x = jQuery(this).data("slide");
+        jQuery('.slides').css('margin-left', '-'+(x-1)*100+'%');
+        jQuery('.slides .slider').removeClass('active');
+        jQuery('.slides'+' #slide'+x).addClass('active');
+    })
+
 });
 
