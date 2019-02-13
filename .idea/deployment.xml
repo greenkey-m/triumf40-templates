@@ -61,7 +61,6 @@
             <excludedPath path="/www/triumf40.ru/libraries" />
             <excludedPath path="/www/triumf40.ru/logs" />
             <excludedPath path="/www/triumf40.ru/media" />
-            <excludedPath path="/www/triumf40.ru/modules" />
             <excludedPath path="/www/triumf40.ru/plugins" />
             <excludedPath path="/www/triumf40.ru/tmp" />
             <excludedPath path="/www/triumf40.ru/templates/beez3" />

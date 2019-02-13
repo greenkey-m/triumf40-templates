@@ -32,8 +32,8 @@ jQuery(document).ready(function () {
 
 
     jQuery('.dropdown-menu a').click(function() {
-        console.log(jQuery(this).attr('data-value'));
-        jQuery(this).closest('.dropdown').find('input.countrycode')
+        //console.log(jQuery(this).attr('data-value'));
+        jQuery(this).closest('.dropdown').find('input.form-control')
             .val('(' + jQuery(this).attr('data-value') + ')');
     });
 

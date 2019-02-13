@@ -75,7 +75,7 @@ defined('_JEXEC') or die;
 
                         <?php if ($params->get('show_introtext', '1')) : ?>
                             <div class="mod-articles-category-introtext" itemprop="description">
-                                <?php echo JHtml::_('string.truncate', $item->introtext, 200); ?>
+                                <?php echo JHtml::_('string.truncate', $item->introtext, 250); ?>
                             </div>
                         <?php endif; ?>
 

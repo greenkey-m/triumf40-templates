@@ -23,6 +23,9 @@ $info = $params->get('info_block_position', 0);
 $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associations'));
 JHtml::_('behavior.caption');
 
+// получаем массив с данными по ценам для калькулятора
+$c = explode(",", $this->item->jcfields[5]->value);
+
 ?>
 <article class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
     <meta itemprop="inLanguage"
@@ -148,7 +151,7 @@ JHtml::_('behavior.caption');
                 <div class="form-group row">
                     <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Длина теплицы</label>
                     <div class="col-xs-6 col-sm-4 col-md-6">
-                        <div class="input-group">
+                        <div class="input-group dropdown">
                             <input id="buttondropdown" name="buttondropdown" class="form-control" placeholder="метров"
                                    type="text">
                             <div class="input-group-btn">
@@ -156,8 +159,8 @@ JHtml::_('behavior.caption');
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">4</a></li>
+                                    <li><a href="#" data-value="2 м" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">2 м</a></li>
+                                    <li><a href="#" data-value="4 м" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">4 м</a></li>
                                 </ul>
                             </div>
 
@@ -466,159 +469,19 @@ JHtml::_('behavior.caption');
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-12 col-md-4">
                 <div class="square" style="font-size: 2.rem;"><i class="fa fa-square"></i></div>
+
             </div>
 
-            <div class="col-xs-12 col-sm-6">
-
+            <div class="col-xs-12 col-sm-12 col-md-8">
+                <div itemprop="articleBody">
+                    <?php echo $this->item->text; ?>
+                </div>
             </div>
 
         </div>
     </form>
-
-
-    <div style="display: none;">
-
-        <?php if ($this->params->get('show_page_heading')) : ?>
-            <header class="page-header">
-                <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-            </header>
-        <?php endif;
-        if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative) {
-            echo $this->item->pagination;
-        }
-        ?>
-
-        <?php // Todo Not that elegant would be nice to group the params ?>
-        <?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
-            || $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') || $assocParam); ?>
-
-        <?php if (!$useDefList && $this->print) : ?>
-            <div id="pop-print" class="btn hidden-print">
-                <?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
-            </div>
-            <div class="clearfix"></div>
-        <?php endif; ?>
-        <?php if ($params->get('show_title') || $params->get('show_author')) : ?>
-            <header class="page-header">
-                <?php if ($params->get('show_title')) : ?>
-                    <h1 itemprop="headline">
-                        <?php echo $this->escape($this->item->title); ?>
-                    </h1>
-                <?php endif; ?>
-                <?php if ($this->item->state == 0) : ?>
-                    <span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
-                <?php endif; ?>
-                <?php if (strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
-                    <span class="label label-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
-                <?php endif; ?>
-                <?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != JFactory::getDbo()->getNullDate()) : ?>
-                    <span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
-                <?php endif; ?>
-            </header>
-        <?php endif; ?>
-        <?php if (!$this->print) : ?>
-            <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-                <?php echo JLayoutHelper::render('joomla.content.icons', array('params' => $params, 'item' => $this->item, 'print' => false)); ?>
-            <?php endif; ?>
-        <?php else : ?>
-            <?php if ($useDefList) : ?>
-                <div id="pop-print" class="btn hidden-print">
-                    <?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
-                </div>
-            <?php endif; ?>
-        <?php endif; ?>
-
-        <?php // Content is generated by content plugin event "onContentAfterTitle" ?>
-        <?php echo $this->item->event->afterDisplayTitle; ?>
-
-        <?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
-            <?php // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block ?>
-            <?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
-        <?php endif; ?>
-
-        <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-            <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-
-            <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-        <?php endif; ?>
-
-        <?php // Content is generated by content plugin event "onContentBeforeDisplay" ?>
-        <?php echo $this->item->event->beforeDisplayContent; ?>
-
-        <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '0')) || ($params->get('urls_position') == '0' && empty($urls->urls_position)))
-            || (empty($urls->urls_position) && (!$params->get('urls_position')))) : ?>
-            <?php echo $this->loadTemplate('links'); ?>
-        <?php endif; ?>
-        <?php if ($params->get('access-view')) : ?>
-            <?php echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
-            <?php
-            if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative) :
-                echo $this->item->pagination;
-            endif;
-            ?>
-            <?php if (isset ($this->item->toc)) :
-                echo $this->item->toc;
-            endif; ?>
-            <div itemprop="articleBody">
-                <?php echo $this->item->text; ?>
-            </div>
-
-            <?php if ($info == 1 || $info == 2) : ?>
-                <?php if ($useDefList) : ?>
-                    <?php // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block ?>
-                    <?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
-                <?php endif; ?>
-                <?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-                    <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-                    <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-                <?php endif; ?>
-            <?php endif; ?>
-
-            <?php
-            if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative) :
-                echo $this->item->pagination;
-                ?>
-            <?php endif; ?>
-            <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
-                <?php echo $this->loadTemplate('links'); ?>
-            <?php endif; ?>
-            <?php // Optional teaser intro text for guests ?>
-        <?php elseif ($params->get('show_noauth') == true && $user->get('guest')) : ?>
-            <?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
-            <?php echo JHtml::_('content.prepare', $this->item->introtext); ?>
-            <?php // Optional link to let them register to see the whole article. ?>
-            <?php if ($params->get('show_readmore') && $this->item->fulltext != null) : ?>
-                <?php $menu = JFactory::getApplication()->getMenu(); ?>
-                <?php $active = $menu->getActive(); ?>
-                <?php $itemId = $active->id; ?>
-                <?php $link = new JUri(JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId, false)); ?>
-                <?php $link->setVar('return', base64_encode(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language))); ?>
-                <p class="readmore">
-                    <a href="<?php echo $link; ?>" class="register">
-                        <?php $attribs = json_decode($this->item->attribs); ?>
-                        <?php
-                        if ($attribs->alternative_readmore == null) :
-                            echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
-                        elseif ($readmore = $attribs->alternative_readmore) :
-                            echo $readmore;
-                            if ($params->get('show_readmore_title', 0) != 0) :
-                                echo JHtml::_('string.truncate', $this->item->title, $params->get('readmore_limit'));
-                            endif;
-                        elseif ($params->get('show_readmore_title', 0) == 0) :
-                            echo JText::sprintf('COM_CONTENT_READ_MORE_TITLE');
-                        else :
-                            echo JText::_('COM_CONTENT_READ_MORE');
-                            echo JHtml::_('string.truncate', $this->item->title, $params->get('readmore_limit'));
-                        endif; ?>
-                    </a>
-                </p>
-            <?php endif; ?>
-        <?php endif; ?>
-
-
-    </div>
 
     <footer class="page-footer">
         <?php
