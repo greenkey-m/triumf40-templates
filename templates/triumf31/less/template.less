@@ -236,7 +236,12 @@ table.pricetable th span {
     align-items: center;
     justify-content: flex-start;
     height: 100%;
+    color: gray;
 }
+.flexcon.active {
+    color: black;
+}
+
 
 table td.price {
     font-size: 1.0em;
@@ -1094,4 +1099,8 @@ form#contact-form {
 
 .dropdown-menu {
     z-index: 1000 !important;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: lightgray !important;
 }

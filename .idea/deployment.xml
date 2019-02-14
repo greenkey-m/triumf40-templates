@@ -1,71 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="triumf40">
+  <component name="PublishConfigData">
     <serverData>
-      <paths name="esplendido">
+      <paths name="triumf">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="firstvds">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="hts">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ocStore Local">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="real51100">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="topoffy.ru">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="triumf40">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/www/triumf40.ru" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath path="/www/triumf40.ru/administrator" />
-            <excludedPath path="/www/triumf40.ru/bin" />
-            <excludedPath path="/www/triumf40.ru/cache" />
-            <excludedPath path="/www/triumf40.ru/cli" />
-            <excludedPath path="/www/triumf40.ru/components" />
-            <excludedPath path="/www/triumf40.ru/includes" />
-            <excludedPath path="/www/triumf40.ru/language" />
-            <excludedPath path="/www/triumf40.ru/layouts" />
-            <excludedPath path="/www/triumf40.ru/libraries" />
-            <excludedPath path="/www/triumf40.ru/logs" />
-            <excludedPath path="/www/triumf40.ru/media" />
-            <excludedPath path="/www/triumf40.ru/plugins" />
-            <excludedPath path="/www/triumf40.ru/tmp" />
-            <excludedPath path="/www/triumf40.ru/templates/beez3" />
-            <excludedPath path="/www/triumf40.ru/templates/protostar" />
-            <excludedPath path="/www/triumf40.ru/templates/system" />
+            <excludedPath path="/administrator" />
+            <excludedPath path="/bin" />
+            <excludedPath path="/borovsk" />
+            <excludedPath path="/cache" />
+            <excludedPath path="/cli" />
+            <excludedPath path="/components" />
+            <excludedPath path="/images" />
+            <excludedPath path="/includes" />
+            <excludedPath path="/kaluga" />
+            <excludedPath path="/kirov" />
+            <excludedPath path="/language" />
+            <excludedPath path="/layouts" />
+            <excludedPath path="/libraries" />
+            <excludedPath path="/logs" />
+            <excludedPath path="/ludinovo" />
+            <excludedPath path="/media" />
+            <excludedPath path="/modules" />
+            <excludedPath path="/obninsk" />
+            <excludedPath path="/plugins" />
+            <excludedPath path="/tmp" />
           </excludedPaths>
         </serverdata>
       </paths>

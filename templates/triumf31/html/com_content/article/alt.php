@@ -159,8 +159,8 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#" data-value="2 м" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">2 м</a></li>
-                                    <li><a href="#" data-value="4 м" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">4 м</a></li>
+                                    <li><a href="#" data-value="2" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">2 м</a></li>
+                                    <li><a href="#" data-value="4" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">4 м</a></li>
                                 </ul>
                             </div>
 
@@ -186,11 +186,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="radio">
                             <label style="font-size: 1.5em">
-                                <input type="radio" name="o5" value="" checked>
+                                <input type="radio" name="s" value="100" checked>
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>10 900 руб.</div>
+                        <div id="price-100"><span>10900</span> руб.</div>
                     </div>
                 </div>
 
@@ -199,11 +199,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="radio">
                             <label style="font-size: 1.5em">
-                                <input type="radio" name="o5" value="">
+                                <input type="radio" name="s" value="65">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>10 900 руб.</div>
+                        <div id="price-65"><span>10900</span> руб.</div>
                     </div>
                 </div>
 
@@ -212,11 +212,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
-                                <input type="checkbox" value="">
+                                <input name="c-tground" type="checkbox" value="">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>450 руб.</div>
+                        <div id="price-tground"><span>450</span> руб.</div>
                     </div>
                 </div>
 
@@ -225,11 +225,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
-                                <input type="checkbox" value="">
+                                <input name="c-brus" type="checkbox" value="">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>1500 руб.</div>
+                        <div id="price-brus"><span>1500</span> руб.</div>
                     </div>
                 </div>
 
@@ -238,11 +238,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
-                                <input type="checkbox" value="">
+                                <input name="c-window" type="checkbox" value="">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>1500 руб.</div>
+                        <div><span>1500</span> руб.</div>
                     </div>
                 </div>
 
@@ -251,11 +251,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
-                                <input type="checkbox" value="">
+                                <input name="c-divide" type="checkbox" value="">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>1500 руб.</div>
+                        <div><span>1500</span> руб.</div>
                     </div>
                 </div>
 
@@ -265,11 +265,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
-                                <input type="checkbox" value="">
+                                <input name="c-montage" type="checkbox" value="">
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div>4 000 руб.</div>
+                        <div id="price-montage"><span>4000</span> руб.</div>
                     </div>
                 </div>
 
@@ -300,7 +300,7 @@ $c = explode(",", $this->item->jcfields[5]->value);
 
                 <div class="form-group">
                     <span class="col-xs-6 col-sm-8 col-md-6 big"></span>
-                    <span class="col-xs-6 col-sm-4 col-md-6 big">15 200 руб.</span>
+                    <span class="col-xs-6 col-sm-4 col-md-6 big"><span id="calc">15200</span> руб.</span>
                 </div>
 
                 <div class="form-group">
