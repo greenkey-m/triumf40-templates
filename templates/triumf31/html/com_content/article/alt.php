@@ -26,6 +26,10 @@ JHtml::_('behavior.caption');
 // получаем массив с данными по ценам для калькулятора
 $c = explode(",", $this->item->jcfields[5]->value);
 
+$d = explode(",", $this->item->jcfields[8]->value);
+
+//print_r($d);
+
 ?>
 <article class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
     <meta itemprop="inLanguage"
@@ -149,18 +153,37 @@ $c = explode(",", $this->item->jcfields[5]->value);
 
                 <!-- Button Drop Down -->
                 <div class="form-group row">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Длина теплицы</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Выберите длину теплицы, или введите вручную, кратно 2 м, потому что длина одного сегмента - 2 м.">
+                        Длина теплицы
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6">
                         <div class="input-group dropdown">
-                            <input id="buttondropdown" name="buttondropdown" class="form-control" placeholder="метров"
+                            <input id="buttondropdown" name="buttondropdown" class="form-control"
+                                   placeholder="метров"
+                                   value="2 м"
                                    type="text">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" style="height: 40px" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#" data-value="2" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">2 м</a></li>
-                                    <li><a href="#" data-value="4" data-100="1111" data-65="1111" data-tground="444" data-brus="333" data-montage="2222">4 м</a></li>
+                                    <?php foreach ($c as $step) {
+                                       $x = explode("x", $step);
+                                       ?>
+                                        <li><a class="step" href="#"
+                                               data-value="<?=$x[0] ?>"
+                                               data-100="<?=$x[1] ?>"
+                                               data-65="<?=$x[2] ?>"
+                                               data-tground="<?=$x[3] ?>"
+                                               data-brus="<?=$x[4] ?>"
+                                               data-montage="<?=$x[5] ?>">
+                                                <?=$x[0] ?> м
+                                            </a>
+                                        </li>
+                                    <?php
+                                    } ?>
                                 </ul>
                             </div>
 
@@ -169,21 +192,33 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Поликарбонат с UV</label>
-                    <div class="col-xs-6 col-sm-4 col-xs-4 col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Весь необходимый для сборки теплицы поликарбонат входит в комплект. Поликарбонат с толщиной стенки 4 мм имеет защиту от ультрафиолетового излучения">
+                        Поликарбонат с UV
+                    </label>
+                    <div class="col-xs-6 col-sm-4 col-xs-4 col-md-6 flexcon active">
                         <div>В комплекте</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Двери и форточки</label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="В торцах теплиц встроены двери с форточками">
+                        Двери и форточки
+                    </label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon active">
                         <div>В комплекте</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Шаг 100см</label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="В этом варианте расстояние между дугами - 1м">
+                        Шаг 100см
+                    </label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon active">
                         <div class="radio">
                             <label style="font-size: 1.5em">
                                 <input type="radio" name="s" value="100" checked>
@@ -195,7 +230,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Шаг 65см</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="В этом варианте расстояние между дугами - 65 см.">
+                        Шаг 65см
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="radio">
                             <label style="font-size: 1.5em">
@@ -208,7 +247,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Грунтозацепы</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Т-образные грунтозацепы, для установки теплицы на землю">
+                        Грунтозацепы
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
@@ -221,7 +264,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Брус</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Вместо грунтозацепов можно использовать брус. Такую теплицу легко переносить с одного места на другое. Также можно заказать брус с большим сечением - 100х100">
+                        Брус 50х100
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
@@ -234,7 +281,11 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Форточка</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Если нужно, можно установить дополнительную форточку в боковой стенке теплицы">
+                        Форточка
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
@@ -242,12 +293,16 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div><span>1500</span> руб.</div>
+                        <div id="price-window"><span><?=$this->item->jcfields[6]->value ?></span> руб.</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Перегородка</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Если внутри теплицы нужно выделить отдельные секции, то можно заказать такую внутреннюю перегородку">
+                        Перегородка
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
@@ -255,13 +310,17 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
-                        <div><span>1500</span> руб.</div>
+                        <div id="price-divide"><span><?=$this->item->jcfields[7]->value ?></span> руб.</div>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown">Монтаж</label>
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Вы также можете заказать монтаж теплицы у вас на участке">
+                        Монтаж
+                    </label>
                     <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
                         <div class="checkbox">
                             <label style="font-size: 1.5em">
@@ -274,20 +333,25 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 </div>
 
                 <div class="form-group">
-                    <label for="delivery" class="col-xs-6 col-sm-8 col-md-6 control-label">Выберите доставку</label>
+                    <label for="delivery" class="col-xs-6 col-sm-8 col-md-6 control-label"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Если нужно, мы можем доставить теплицу прямо на ваш участок в пределах Калужской области">
+                        Выберите доставку</label>
                     <div class="col-xs-6 col-sm-4 col-md-6">
-                        <div class="input-group" style="">
-                            <input type="text" class="form-control selectedit" aria-label="">
+                        <div class="input-group dropdown">
+                            <input id="delivery" type="text" class="form-control selectedit" name="delivery" aria-label="" value="Самовывоз" data-price="0">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-success dropdown-toggle" style="height: 40px"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">Самовывоз</a></li>
-                                    <li><a href="#">Обнинск</a></li>
-                                    <li><a href="#">Малоярославец</a></li>
-                                    <li><a href="#">Людиново</a></li>
+                                    <li><a class="delivery" href="#" data-value="Самовывоз" data-price="0">Самовывоз - 0</a></li>
+                                    <?php foreach ($d as $point) {
+                                        $x = explode(" ", trim($point));
+                                        ?>
+                                    <li><a class="delivery" href="#" data-value="<?=($x[0]." - ".$x[1])?>" data-price="<?=$x[1] ?>"><?=($x[0]." - ".$x[1])?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </div><!-- /btn-group -->
                         </div><!-- /input-group -->
@@ -306,7 +370,7 @@ $c = explode(",", $this->item->jcfields[5]->value);
                 <div class="form-group">
                     <span class="col-xs-6 col-sm-8 col-md-6 big"></span>
                     <div class="col-xs-6 col-sm-4 col-md-6">
-                        <button type="button" class="buy scroll btn btn-lg btn-danger" style="padding: 15px; width:100%; min-width:auto;" data-toggle="modal" data-target="#myModal">
+                        <button type="button" class="buy scroll btn btn-lg btn-danger" style="padding: 15px; width:100%; min-width:auto;" data-toggle="modal" data-target="#orderform">
                             Заказать
                         </button>
 
@@ -317,7 +381,7 @@ $c = explode(",", $this->item->jcfields[5]->value);
 
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="orderform" tabindex="-1" role="dialog" aria-labelledby="OrderForm">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
 
@@ -335,17 +399,10 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                 <div class="controls">
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="form_name">Firstname *</label>
-                                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="form_lastname">Lastname *</label>
-                                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                                <label for="form_name">Ваше имя</label>
+                                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Как к вам общаться" data-error="Ошибка ввода">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -353,24 +410,58 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="form_email">Email *</label>
-                                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                                <label for="form_email">Email</label>
+                                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Напишите ваш email" data-error="Ошибка ввода">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="form_phone">Phone</label>
-                                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                                <label for="form_phone">Телефон</label>
+                                                <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Напишите номер телефона" required="required" data-error="Номер телефона обязателен">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <table class="table tableform">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Тип</th>
+                                                        <th>Длина</th>
+                                                        <th>Шаг</th>
+                                                        <th>Опции</th>
+                                                        <th>Доставка</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="5">Итого: <span id="fsum">12 000</span> руб.</td>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span id="ftype">Атлант</span></td>
+                                                        <td><span id="flength">2 м</span></td>
+                                                        <td><span id="fstep">100 см</span></td>
+                                                        <td><span id="foptions"></span></td>
+                                                        <td><span id="fdelivery">Самовывоз</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <input id="gtype" type="text" name="gtype" value="Атлант" hidden>
+                                            <input id="glength" type="text" name="glength" value="2" hidden>
+                                            <input id="gstep" type="text" name="gstep" value="100" hidden>
+                                            <input id="goptions" type="text" name="goptions" value="" hidden>
+                                            <input id="gdelivery" type="text" name="gdelivery" value="Самовывоз" hidden>
+                                            <input id="gsum" type="text" name="gsum" value="12000" hidden>
+
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="form_message">Message *</label>
-                                                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                                <label for="form_message">Дополнительно сообщение</label>
+                                                <textarea id="form_message" name="message" class="form-control" placeholder="Что вас дополнительно интересует?" rows="2" data-error="Ошибка ввода"></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -386,7 +477,7 @@ $c = explode(",", $this->item->jcfields[5]->value);
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p class="text-muted"><strong>*</strong> These fields are required. Contact form template by <a href="https://bootstrapious.com/p/bootstrap-recaptcha" target="_blank">Bootstrapious</a>.</p>
+                                            <p class="text-muted"><strong>*</strong> Эти поля нужно обязательно заполнить.</p>
                                         </div>
                                     </div>
                                 </div>

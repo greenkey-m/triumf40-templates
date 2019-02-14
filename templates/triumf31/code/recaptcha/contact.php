@@ -4,23 +4,25 @@ require('recaptcha-master/src/autoload.php');
 
 // configure
 // an email address that will be in the From field of the email.
-$from = 'Site form <merle.greenkey@yandex.ru>';
+$from = 'Заказ теплицы с сайта <order@triumf40.ru>';
 
 // an email address that will receive the email with the output of the form
-$sendTo = 'Triumf order form <teplitsa@triumf40.ru>';
+//$sendTo = 'Triumf order <web@greenkey.ru>';
+$sendTo = 'Triumf order <teplitsa@triumf40.ru>';
 
 // subject of the email
-$subject = 'New message from contact form';
+$subject = 'Заказ теплицы';
 
 // form field names and their translations.
 // array variable name => Text to appear in the email
-$fields = array('name' => 'Name', 'surname' => 'Surname', 'phone' => 'Phone', 'email' => 'Email', 'message' => 'Message');
+$fields = array('name' => 'Имя', 'phone' => 'Телефон', 'email' => 'Email', 'message' => 'Сообщение',
+    'gtype' => 'Тип', 'glength' => 'Длина', 'gstep' => 'Шаг', 'goptions' => 'Опции', 'gdelivery' => 'Доставка', 'gsum' => 'Сумма');
 
 // message that will be displayed when everything is OK :)
-$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
+$okMessage = 'Заказ успешно отправлен. Спасибо, мы скоро с вами свяжемся!';
 
 // If something goes wrong, we will display this message.
-$errorMessage = 'There was an error while submitting the form. Please try again later';
+$errorMessage = 'Произошла ошибка при отправке заказа. Попробуйте еще раз.';
 
 // ReCaptch Secret
 $recaptchaSecret = '6LeoxAQTAAAAACEJE2aL30TzbjF7BjyINT9UFXvM';
@@ -54,7 +56,7 @@ try {
         
         // everything went well, we can compose the message, as usually
         
-        $emailText = "You have a new message from your contact form\n=============================\n";
+        $emailText = "У вас новый заказ теплицы с сайта\n=============================\n";
 
         foreach ($_POST as $key => $value) {
             // If the field exists in the $fields array, include it in the email

@@ -18,6 +18,10 @@ jQuery(document).ready(function () {
         }
     });
 
+    jQuery(function () {
+        jQuery('[data-toggle="tooltip"]').tooltip()
+    })
+
     jQuery('table.pricetable tr.selectable').on('click', function () {
         //jQuery('table.pricetable tr').removeClass('selected');
         //jQuery(this).toggleClass('selected');
@@ -32,28 +36,75 @@ jQuery(document).ready(function () {
 
     function calc_price() {
         let price = 0;
-        if (jQuery("input#s[type='radio']:checked").val() == '100') {
+        if (jQuery('.flexcon.active input').val() == '100') {
             price = Number(jQuery('#price-100 span').text());
         } else {
             price = Number(jQuery('#price-65 span').text());
         }
-        if (jQuery('input[name="c-tground"]').is(':checked')) price = price + Number(jQuery('#price-tground span').text());
-        if (jQuery('input[name="c-brus"]').is(':checked')) price = price + Number(jQuery('#price-brus span').text());
-        if (jQuery('input[name="c-montage"]').is(':checked')) price = price + Number(jQuery('#price-montage span').text());
+        let option = '';
+        if (jQuery('input[name="c-tground"]').is(':checked')) {
+            price = price + Number(jQuery('#price-tground span').text());
+            option += 'гр-зац '
+        }
+        if (jQuery('input[name="c-brus"]').is(':checked')) {
+            price = price + Number(jQuery('#price-brus span').text());
+            option += 'брус '
+
+        }
+        if (jQuery('input[name="c-montage"]').is(':checked')) {
+            price = price + Number(jQuery('#price-montage span').text());
+            option += 'монтаж '
+        }
+
+        if (jQuery('input[name="c-window"]').is(':checked')) {
+            price = price + Number(jQuery('#price-window span').text());
+            option += 'форточка '
+        }
+        if (jQuery('input[name="c-divide"]').is(':checked')) {
+            price = price + Number(jQuery('#price-divide span').text());
+            option += 'перегор '
+        }
+
+        price = price + Number(jQuery('#delivery').attr('data-price'));
+
         jQuery('#calc').text(price);
+
+        jQuery('#ftype').text('Атлант');
+        jQuery('#flength').text(jQuery('#buttondropdown').val());
+        jQuery('#fstep').text(jQuery('.flexcon.active input').val()+' см');
+        jQuery('#foptions').text(option);
+        jQuery('#fdelivery').text(jQuery('#delivery').val().split(" ")[0]);
+        jQuery('#fsum').text(price);
+
+        jQuery('#gtype').attr('value', 'Атлант');
+        jQuery('#glength').attr('value', jQuery('#buttondropdown').val());
+        jQuery('#gstep').attr('value', jQuery('.flexcon.active input').val()+' см');
+        jQuery('#goptions').attr('value',option);
+        jQuery('#gdelivery').attr('value', jQuery('#delivery').val().split(" ")[0]);
+        jQuery('#gsum').attr('value', price);
+
+
     }
 
-    jQuery('.dropdown-menu a').click(function(e) {
+    jQuery('form.form-order .dropdown-menu a.step').click(function(e) {
         //console.log(jQuery(this).attr('data-value'));
         e.preventDefault();
         jQuery(this).closest('.dropdown').find('input.form-control')
-            .val('(' + jQuery(this).attr('data-value') + ')');
+            .val(jQuery(this).attr('data-value') + ' м');
         jQuery('#price-100 span').text(jQuery(this).attr('data-100'));
         jQuery('#price-65 span').text(jQuery(this).attr('data-65'));
         jQuery('#price-tground span').text(jQuery(this).attr('data-tground'));
         jQuery('#price-brus span').text(jQuery(this).attr('data-brus'));
         jQuery('#price-montage span').text(jQuery(this).attr('data-montage'));
-        calc_price(2);
+        calc_price();
+    });
+
+    jQuery('form.form-order .dropdown-menu a.delivery').click(function(e) {
+        //console.log(jQuery(this).attr('data-value'));
+        e.preventDefault();
+        jQuery(this).closest('.dropdown').find('input.form-control')
+            .val(jQuery(this).attr('data-value')).attr('data-price', jQuery(this).attr('data-price'));
+        calc_price();
     });
 
 
@@ -66,8 +117,20 @@ jQuery(document).ready(function () {
     })
 
     jQuery('.flexcon input').on('click', function (e) {
-        jQuery(this).closest('.flexcon').toggleClass('active');
+        jQuery('.flexcon input').each(function(ind, el) {
+            if (jQuery(el).is(':checked')) jQuery(el).closest('.flexcon').addClass('active');
+            else jQuery(el).closest('.flexcon').removeClass('active');
+        })
+        calc_price();
     });
+
+    // Устанавливаем начальный статус всех переключателей
+    jQuery('.flexcon input').each(function(ind, el) {
+        if (jQuery(el).is(':checked')) jQuery(el).closest('.flexcon').addClass('active');
+        else jQuery(el).closest('.flexcon').removeClass('active');
+    })
+    calc_price();
+
 
 });
 
