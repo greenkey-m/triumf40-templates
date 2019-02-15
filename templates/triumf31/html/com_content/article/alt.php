@@ -28,7 +28,10 @@ $c = explode(",", $this->item->jcfields[5]->value);
 
 $d = explode(",", $this->item->jcfields[8]->value);
 
-//print_r($d);
+$f = "images/".$this->item->jcfields[11]->value;
+
+//print_r($this->item->jcfields[3]->value);
+//print_r($this->item->jcfields[13]->rawvalue);
 
 ?>
 <article class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
@@ -41,58 +44,24 @@ $d = explode(",", $this->item->jcfields[8]->value);
             <div id="slider">
                 <div class="slides">
 
-                    <!-- First slide -->
-                    <div id="slide1" class="slider active">
-                        <div class="content">
-                            <div class="content-txt">
-                                <h1> Теплица Атлант </h1>
-                                <p>Изготавливается из оцинкованной квадратной трубы сечением 30х30 мм, с толщиной стенки
-                                    1
-                                    мм.</p>
-                                <p>Ширина теплицы: 3 м.</p>
-                                <p>Высота теплицы: 2,1 м.</p>
-                            </div>
-                        </div>
-                        <div class="images">
-                            <img src="/images/alter.jpg">
-                        </div>
-                    </div>
+                    <?php
+                      $imgs = scandir($f);
 
-                    <!-- Second slide -->
-                    <div id="slide2" class="slider">
-                        <div class="images">
-                            <img src="/images/alter.jpg">
-                        </div>
-                    </div>
+                      foreach ($imgs as $img) {
 
-                    <!-- Third slide -->
-                    <div id="slide3" class="slider">
-                        <div class="content">
-                            <div class="content-txt">
-                                <h1> Теплица Атлант </h1>
-                                <p>В данной модели теплицы с шагом 1 м, желательно устанавливать подпорки на зиму или
-                                    приобрести
-                                    теплицу с шагом 65 см.</p>
-                            </div>
-                        </div>
-                        <div class="images">
-                            <img src="/images/alter.jpg">
-                        </div>
-                    </div>
+                          if (($img <> ".")&($img <> "..")) {
+                    ?>
+                          <div id="slide1" class="slider active">
+                              <div class="images">
+                                  <img src="<?= $f . "/" . $img ?>">
+                              </div>
+                          </div>
 
-                    <!-- Fourth slide -->
-                    <div id="slide4" class="slider">
-                        <div class="legend" style="display: none;"></div>
-                        <div class="content">
-                            <div class="content-txt">
-                                <h1> Теплица Атлант </h1>
-                                <h2> Your description </h2>
-                            </div>
-                        </div>
-                        <div class="images">
-                            <img src="/images/alter.jpg">
-                        </div>
-                    </div>
+                          <?php
+                    }
+                      }
+
+                    ?>
 
                 </div>
 
@@ -108,10 +77,21 @@ $d = explode(",", $this->item->jcfields[8]->value);
                 </div>
 
                 <div class="thumbs">
-                    <a href="" data-slide="1"><img src="/images/alter.jpg" /></a>
-                    <a href="" data-slide="2"><img src="/images/alter.jpg" /></a>
-                    <a href="" data-slide="3"><img src="/images/alter.jpg" /></a>
-                    <a href="" data-slide="4"><img src="/images/alter.jpg" /></a>
+
+                    <?php
+                    $i = 0;
+                    foreach ($imgs as $img) {
+
+                        if (($img <> ".")&($img <> "..")) {
+                            $i++;
+                            ?>
+                            <a href="" data-slide="<?=$i ?>"><img src="<?= $f . "/" . $img ?>" /></a>
+
+                            <?php
+                        }
+                    }
+
+                    ?>
                 </div>
 
 
@@ -502,67 +482,18 @@ $d = explode(",", $this->item->jcfields[8]->value);
 
     <form class="form-horizontal price_calc form-inline" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
-        <div class="table-responsive">
-        <table border="1" class="pricetable" style="width: 100%;" cellspacing="0" cellpadding="0">
-            <thead>
-            <tr>
-                <th>Длина</th>
-                <th><strong>Площадь</strong><span>S</span></th>
-                <th><strong>100 см<br/></strong><span>100 см</span></th>
-                <th>65 см</th>
-                <th><strong>Грунтозацепы</strong><span>Гр-з</span></th>
-                <th><strong>Стоимость монтажа</strong><span>Монтаж</span></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="selectable">
-                <td>2 м</td>
-                <td>6 м<sup>2</sup></td>
-                <td class="price">10 900 руб.</td>
-                <td>&nbsp;</td>
-                <td>450 руб.</td>
-                <td>4 000 руб.</td>
-            </tr>
-            <tr class="selectable">
-                <td>4 м</td>
-                <td>12 м<sup>2</sup></td>
-                <td class="price">14 900 руб.</td>
-                <td class="price">16 200 руб.</td>
-                <td>450 руб.</td>
-                <td>4 000 руб.</td>
-            </tr>
-            <tr class="selectable">
-                <td>6 м</td>
-                <td>18 м<sup>2</sup></td>
-                <td class="price">18 650 руб.</td>
-                <td class="price">20 600 руб.</td>
-                <td>550 руб.</td>
-                <td>4 500 руб.</td>
-            </tr>
-            <tr class="selectable">
-                <td>8 м</td>
-                <td>24 м<sup>2</sup></td>
-                <td class="price">22 450 руб.</td>
-                <td class="price">25 050 руб.</td>
-                <td>700 руб.</td>
-                <td>5 000 руб.</td>
-            </tr>
-            <tr>
-                <td>2 м (секция)</td>
-                <td>6 м<sup>2</sup></td>
-                <td class="price">3 800 руб.</td>
-                <td class="price">4 450 руб.</td>
-                <td>150 руб.</td>
-                <td>500 руб.</td>
-            </tr>
-            </tbody>
-        </table>
-        </div>
+        <?php
+            echo $this->item->jcfields[3]->value;
+        ?>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <div class="square" style="font-size: 2.rem;"><i class="fa fa-square"></i></div>
-
+            <div class="col-xs-12 col-sm-12 col-md-4 icons">
+                <img src="images/icon/icon_thick.png" />
+                <img src="images/icon/icon_2win.png" />
+                <img src="images/icon/icon_mont.png" />
+                <img src="images/icon/icon_delivery.png" />
+                <img src="images/icon/icon_uv.png" />
+                <img src="images/icon/icon_zn.png" />
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-8">
