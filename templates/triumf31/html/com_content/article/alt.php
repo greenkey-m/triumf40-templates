@@ -23,12 +23,43 @@ $info = $params->get('info_block_position', 0);
 $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associations'));
 JHtml::_('behavior.caption');
 
+
+$l = explode(",", $this->item->jcfields[4]->value);
+
 // получаем массив с данными по ценам для калькулятора
 $c = explode(",", $this->item->jcfields[5]->value);
 
 $d = explode(",", $this->item->jcfields[8]->value);
 
 $f = "images/".$this->item->jcfields[11]->value;
+
+
+foreach ($c as $cit) {
+    $x = explode("x", trim($cit));
+    $parray[$x[0]] = $x;
+}
+$carray[0] = $parray[0];
+foreach ($l as $lit) {
+    $lit = trim($lit);
+    if (isset($parray[$lit])) {
+        $carray[$lit] = $parray[$lit];
+    } else {
+        // Откатывать назад, пока не найдется существующая запись
+        // Тогда к ней прибавить разницу в длине / 2 умноженную на цены сегмента, которые записаны в 0 индексе.
+        $x = ($lit - $prevs) / 2;
+        $carray[$lit][0] = $lit;
+        $carray[$lit][1] = $carray[$prevs][1] + $x * $carray[0][1];
+        $carray[$lit][2] = $carray[$prevs][2] + $x * $carray[0][2];
+        $carray[$lit][3] = $carray[$prevs][3] + $x * $carray[0][3];
+        $carray[$lit][4] = $carray[$prevs][4] + $x * $carray[0][4];
+        $carray[$lit][5] = $carray[$prevs][5] + $x * $carray[0][5];
+        //TODO нулевой индекс лучше наверное отдельно разместить
+    }
+    $prevs = trim($lit);
+}
+//print_r($l);
+//print_r($parray);
+//print_r($carray);
 
 //print_r($this->item->jcfields[3]->value);
 //print_r($this->item->jcfields[13]->rawvalue);
@@ -65,17 +96,6 @@ $f = "images/".$this->item->jcfields[11]->value;
 
                 </div>
 
-                <div class="switch" style="display: none;">
-                    <ul>
-                        <li>
-                            <div class="on"></div>
-                        </li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-
                 <div class="thumbs">
 
                     <?php
@@ -103,34 +123,6 @@ $f = "images/".$this->item->jcfields[11]->value;
 
             <form class="form-horizontal form-order">
 
-                <div class="form-group" style="display:none;">
-                    <table class="table table-condense sizing" role="group" aria-label="...">
-                        <tbody>
-                        <tr>
-                            <td>Шаг</td>
-                            <td>2 м.</td>
-                            <td>4 м.</td>
-                            <td>6 м.</td>
-                            <td>8 м.</td>
-                        </tr>
-                        <tr>
-                            <td nowrap>100 см</td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                        </tr>
-                        <tr>
-                            <td>65 см</td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                            <td><button type="button" class="btn btn-sm btn-info sizeprice">10 000</button></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
                 <!-- Button Drop Down -->
                 <div class="form-group row">
                     <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
@@ -149,21 +141,23 @@ $f = "images/".$this->item->jcfields[11]->value;
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right">
-                                    <?php foreach ($c as $step) {
-                                       $x = explode("x", $step);
-                                       ?>
-                                        <li><a class="step" href="#"
-                                               data-value="<?=$x[0] ?>"
-                                               data-100="<?=$x[1] ?>"
-                                               data-65="<?=$x[2] ?>"
-                                               data-tground="<?=$x[3] ?>"
-                                               data-brus="<?=$x[4] ?>"
-                                               data-montage="<?=$x[5] ?>">
-                                                <?=$x[0] ?> м
-                                            </a>
-                                        </li>
-                                    <?php
-                                    } ?>
+                                    <?php foreach ($carray as $step) {
+                                       if ($step[0] <> '0') {
+                                           ?>
+                                           <li><a class="step" href="#"
+                                                  data-value="<?= $step[0] ?>"
+                                                  data-100="<?= $step[1] ?>"
+                                                  data-65="<?= $step[2] ?>"
+                                                  data-tground="<?= $step[3] ?>"
+                                                  data-brus="<?= $step[4] ?>"
+                                                  data-montage="<?= $step[5] ?>">
+                                                   <?= $step[0] ?> м
+                                               </a>
+                                           </li>
+                                           <?php
+                                       }
+                                    }
+                                    ?>
                                 </ul>
                             </div>
 
@@ -198,7 +192,7 @@ $f = "images/".$this->item->jcfields[11]->value;
                            title="В этом варианте расстояние между дугами - 1м">
                         Шаг 100см
                     </label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon active">
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon active s100">
                         <div class="radio">
                             <label style="font-size: 1.5em">
                                 <input type="radio" name="s" value="100" checked>
@@ -215,7 +209,7 @@ $f = "images/".$this->item->jcfields[11]->value;
                            title="В этом варианте расстояние между дугами - 65 см.">
                         Шаг 65см
                     </label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon s65">
                         <div class="radio">
                             <label style="font-size: 1.5em">
                                 <input type="radio" name="s" value="65">
@@ -422,7 +416,7 @@ $f = "images/".$this->item->jcfields[11]->value;
                                                 </tfoot>
                                                 <tbody>
                                                     <tr>
-                                                        <td><span id="ftype">Атлант</span></td>
+                                                        <td><span id="ftype"><?=$this->item->jcfields[1]->value ?></span></td>
                                                         <td><span id="flength">2 м</span></td>
                                                         <td><span id="fstep">100 см</span></td>
                                                         <td><span id="foptions"></span></td>
@@ -430,7 +424,7 @@ $f = "images/".$this->item->jcfields[11]->value;
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <input id="gtype" type="text" name="gtype" value="Атлант" hidden>
+                                            <input id="gtype" type="text" name="gtype" value="<?=$this->item->jcfields[1]->value ?></span>" hidden>
                                             <input id="glength" type="text" name="glength" value="2" hidden>
                                             <input id="gstep" type="text" name="gstep" value="100" hidden>
                                             <input id="goptions" type="text" name="goptions" value="" hidden>
@@ -487,7 +481,7 @@ $f = "images/".$this->item->jcfields[11]->value;
         ?>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 icons">
+            <div class="col-xs-12 col-sm-12 col-md-4 prop-icons">
                 <img src="images/icon/icon_thick.png" />
                 <img src="images/icon/icon_2win.png" />
                 <img src="images/icon/icon_mont.png" />

@@ -71,14 +71,12 @@ jQuery(document).ready(function () {
 
             jQuery('#calc').text(price);
 
-            jQuery('#ftype').text('Атлант');
             jQuery('#flength').text(jQuery('#buttondropdown').val());
             jQuery('#fstep').text(jQuery('.flexcon.active input').val()+' см');
             jQuery('#foptions').text(option);
             jQuery('#fdelivery').text(jQuery('#delivery').val().split(" ")[0]);
             jQuery('#fsum').text(price);
 
-            jQuery('#gtype').attr('value', 'Атлант');
             jQuery('#glength').attr('value', jQuery('#buttondropdown').val());
             jQuery('#gstep').attr('value', jQuery('.flexcon.active input').val()+' см');
             jQuery('#goptions').attr('value',option);
@@ -95,6 +93,13 @@ jQuery(document).ready(function () {
             .val(jQuery(this).attr('data-value') + ' м');
         jQuery('#price-100 span').text(jQuery(this).attr('data-100'));
         jQuery('#price-65 span').text(jQuery(this).attr('data-65'));
+        if (jQuery(this).attr('data-65') == '0') {
+            jQuery('#price-65 span').parents('.form-group').addClass('inactive')
+            jQuery('.s100').addClass('active');
+            jQuery('.s100 input').prop('checked', true);;
+            jQuery('.s65').removeClass('active');
+        }
+        else jQuery('#price-65 span').parents('.form-group').removeClass('inactive');
         jQuery('#price-tground span').text(jQuery(this).attr('data-tground'));
         jQuery('#price-brus span').text(jQuery(this).attr('data-brus'));
         jQuery('#price-montage span').text(jQuery(this).attr('data-montage'));
@@ -138,6 +143,7 @@ jQuery(document).ready(function () {
         .val(jQuery(el).attr('data-value') + ' м');
     jQuery('#price-100 span').text(jQuery(el).attr('data-100'));
     jQuery('#price-65 span').text(jQuery(el).attr('data-65'));
+    if (jQuery(el).attr('data-65') == '0') jQuery('#price-65 span').parents('.form-group').addClass('inactive');
     jQuery('#price-tground span').text(jQuery(el).attr('data-tground'));
     jQuery('#price-brus span').text(jQuery(el).attr('data-brus'));
     jQuery('#price-montage span').text(jQuery(el).attr('data-montage'));
