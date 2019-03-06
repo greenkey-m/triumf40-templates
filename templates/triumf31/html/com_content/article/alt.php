@@ -38,9 +38,25 @@ foreach ($c as $cit) {
     $x = explode("x", trim($cit));
     $parray[$x[0]] = $x;
 }
-$carray[0] = $parray[0];
+if (isset($parray[0])) {
+    $carray[0] = $parray[0];
+} else {
+    $carray[0][0] = 0;
+    $carray[0][1] = 0;
+    $carray[0][2] = 0;
+    $carray[0][3] = 0;
+    $carray[0][4] = 0;
+    $carray[0][5] = 0;
+}
+$minln = 0;
 foreach ($l as $lit) {
     $lit = trim($lit);
+    if ($minln == 0) {
+        $minln = $lit;
+    } else {
+        if ($minln > $lit) $minln = $lit;
+    }
+
     if (isset($parray[$lit])) {
         $carray[$lit] = $parray[$lit];
     } else {
@@ -57,17 +73,34 @@ foreach ($l as $lit) {
     }
     $prevs = trim($lit);
 }
+
+// Если передана длина теплицы, сразу установить
+$input = JFactory::getApplication()->input;
+$lth = $input->getCmd('l', $minln);
+// Если не задано, то ставим самый минимальный размер
+if (($lth<>'4')&&($lth<>'6')&&($lth<>'8')&&($lth<>'10')) $lth = 4;
+$st = $input->getCmd('s', '100');
+if (($st<>'100')&&($st<>'65')) $st = 100;
+
+
 //print_r($l);
 //print_r($parray);
 //print_r($carray);
 
 //print_r($this->item->jcfields[3]->value);
-//print_r($this->item->jcfields[13]->rawvalue);
+//print_r($this->item->jcfields[15]);
+
+$icons = json_decode($this->item->jcfields[15]->rawvalue);
+//print_r($icons->icons0->ico);
 
 ?>
 <article class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
     <meta itemprop="inLanguage"
           content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>"/>
+
+    <header class="page-header">
+        <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+    </header>
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8">
@@ -134,7 +167,8 @@ foreach ($l as $lit) {
                         <div class="input-group dropdown">
                             <input id="buttondropdown" name="buttondropdown" class="form-control"
                                    placeholder="метров"
-                                   value="2 м"
+                                   value="<?=$lth ?> м"
+                                   data-length="<?=$lth ?>"
                                    type="text">
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-default dropdown-toggle" style="height: 40px" data-toggle="dropdown">
@@ -192,10 +226,10 @@ foreach ($l as $lit) {
                            title="В этом варианте расстояние между дугами - 1м">
                         Шаг 100см
                     </label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon active s100">
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon <?=($st == 100 ? "active " : "") ?>s100">
                         <div class="radio">
                             <label style="font-size: 1.5em">
-                                <input type="radio" name="s" value="100" checked>
+                                <input type="radio" name="s" value="100" <?=($st == 100 ? "checked" : "") ?>>
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
@@ -209,10 +243,10 @@ foreach ($l as $lit) {
                            title="В этом варианте расстояние между дугами - 65 см.">
                         Шаг 65см
                     </label>
-                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon s65">
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon <?=($st == 65 ? "active " : "") ?>s65">
                         <div class="radio">
                             <label style="font-size: 1.5em">
-                                <input type="radio" name="s" value="65">
+                                <input type="radio" name="s" value="65" <?=($st == 65 ? "checked" : "") ?>>
                                 <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                             </label>
                         </div>
@@ -254,7 +288,7 @@ foreach ($l as $lit) {
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group<?= ($this->item->jcfields[6]->value == '0' ? ' inactive' : ''  )?>">
                     <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
                            data-toggle="tooltip" data-placement="top"
                            title="Если нужно, можно установить дополнительную форточку в боковой стенке теплицы">
@@ -271,7 +305,7 @@ foreach ($l as $lit) {
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group<?= ($this->item->jcfields[7]->value == '0' ? ' inactive' : ''  )?>">
                     <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
                            data-toggle="tooltip" data-placement="top"
                            title="Если внутри теплицы нужно выделить отдельные секции, то можно заказать такую внутреннюю перегородку">
@@ -285,6 +319,23 @@ foreach ($l as $lit) {
                             </label>
                         </div>
                         <div id="price-divide"><span><?=$this->item->jcfields[7]->value ?></span> руб.</div>
+                    </div>
+                </div>
+
+                <div class="form-group<?= ($this->item->jcfields[14]->value == '0' ? ' inactive' : ''  )?>">
+                    <label class="col-xs-6 col-sm-8 col-md-6 control-label" for="buttondropdown"
+                           data-toggle="tooltip" data-placement="top"
+                           title="Механизм открывания форточки, автомат">
+                        Механизм форточки
+                    </label>
+                    <div class="col-xs-6 col-sm-4 col-md-6 flexcon">
+                        <div class="checkbox">
+                            <label style="font-size: 1.5em">
+                                <input name="c-autowin" type="checkbox" value="">
+                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                            </label>
+                        </div>
+                        <div id="price-autowin"><span><?=$this->item->jcfields[14]->value ?></span> руб.</div>
                     </div>
                 </div>
 
@@ -454,6 +505,16 @@ foreach ($l as $lit) {
                                             <p class="text-muted"><strong>*</strong> Эти поля нужно обязательно заполнить.</p>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-small">
+                                                Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных,
+                                                в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных»,
+                                                на условиях и для целей, определенных в <a href="/agreement-pd">Согласии на обработку персональных данных</a>
+                                            </p>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                         </div>
@@ -478,11 +539,13 @@ foreach ($l as $lit) {
 
         <?php
             echo $this->item->jcfields[3]->value;
+            $icon_file = str_replace('t', 'icon_thick', $icons->icons0->ico);
         ?>
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4 prop-icons">
-                <img src="images/icon/icon_thick.png" />
+
+                <img src="images/icon/<?=$icon_file ?>.png" />
                 <img src="images/icon/icon_2win.png" />
                 <img src="images/icon/icon_mont.png" />
                 <img src="images/icon/icon_delivery.png" />

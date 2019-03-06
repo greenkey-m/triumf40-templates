@@ -2,6 +2,48 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
+      <paths name="esplendido">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="firstvds">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hts">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ocStore Local">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="real51100">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="topoffy.ru">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="triumf">
         <serverdata>
           <mappings>
@@ -13,7 +55,6 @@
             <excludedPath path="/borovsk" />
             <excludedPath path="/cache" />
             <excludedPath path="/cli" />
-            <excludedPath path="/components" />
             <excludedPath path="/images" />
             <excludedPath path="/includes" />
             <excludedPath path="/kaluga" />
@@ -29,6 +70,13 @@
             <excludedPath path="/plugins" />
             <excludedPath path="/tmp" />
           </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="triumf40">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
     </serverData>

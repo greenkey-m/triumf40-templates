@@ -458,7 +458,7 @@ div.pagination ul.pagination-list li.disabled a {
 }
 
 
-.startprice {
+a.startprice {
     position: absolute;
     top: 50px;
     right: 0px;
@@ -466,10 +466,15 @@ div.pagination ul.pagination-list li.disabled a {
     background-color: #d22104;
     border-bottom: 1px solid #9f1b06;
     color: white;
+    font-size: 2rem;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
     padding: 5px 8px;
     border-radius: 8px 0 0 8px;
+}
+
+a.startprice:hover {
+    color: white;
 }
 
 .category-module .isotope-container.row {
@@ -530,8 +535,15 @@ article.item-page dl.fields-container {
     color: white;
 }
 
+@media screen and (max-width: 450px) {
+    .isotope-item {
+        width: 100%;
+    }
+}
+
 
 .isotope-item h2 {
+    font-size: 2.4rem !important;
     margin-top: 6px;
     margin-bottom: 6px;
 }
@@ -542,11 +554,11 @@ article.item-page dl.fields-container {
 
 .isotope-item .mod-articles-category-introtext {
     margin: 0 10px;
-    height: 85px;
+    height: 150px;
 }
 
 .isotope-item .mod-articles-category-introtext p {
-    font-size: 1rem;
+    font-size: 1.6rem;
     margin: 0;
 }
 
@@ -569,9 +581,20 @@ a.ordering:hover {
 }
 
 .overlay-container {
-    height: 200px;
+    height: 300px;
     overflow: hidden;
 }
+@media screen and (max-width: 768px) {
+    .overlay-container {
+        height: 400px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .overlay-container {
+        height: 300px;
+    }
+}
+
 
 
 .item {
@@ -1141,4 +1164,9 @@ form#contact-form {
 
 .inactive {
     display: none !important;
+}
+
+
+.text-small {
+    font-size: 1rem;
 }

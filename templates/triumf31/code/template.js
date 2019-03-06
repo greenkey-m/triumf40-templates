@@ -53,6 +53,11 @@ jQuery(document).ready(function () {
                 option += 'брус '
 
             }
+            if (jQuery('input[name="c-autowin"]').is(':checked')) {
+                price = price + Number(jQuery('#price-autowin span').text());
+                option += 'мех '
+
+            }
             if (jQuery('input[name="c-montage"]').is(':checked')) {
                 price = price + Number(jQuery('#price-montage span').text());
                 option += 'монтаж '
@@ -75,13 +80,21 @@ jQuery(document).ready(function () {
             jQuery('#fstep').text(jQuery('.flexcon.active input').val()+' см');
             jQuery('#foptions').text(option);
             jQuery('#fdelivery').text(jQuery('#delivery').val().split(" ")[0]);
-            jQuery('#fsum').text(price);
 
             jQuery('#glength').attr('value', jQuery('#buttondropdown').val());
             jQuery('#gstep').attr('value', jQuery('.flexcon.active input').val()+' см');
             jQuery('#goptions').attr('value',option);
             jQuery('#gdelivery').attr('value', jQuery('#delivery').val().split(" ")[0]);
-            jQuery('#gsum').attr('value', price);
+
+            // Если сумма доставки - 00, то доставка неизвестна
+            if (jQuery('#delivery').attr('data-price') == '00') {
+                jQuery('#fsum').text(price+' (стоимость доставки будет рассчитана после звонка)');
+                jQuery('#gsum').attr('value', price+' (стоимость доставки будет рассчитана после звонка)');
+            } else {
+                jQuery('#fsum').text(price+' (стоимость доставки будет рассчитана после звонка)');
+                jQuery('#gsum').attr('value', price+' (стоимость доставки будет рассчитана после звонка)');
+            }
+
 
         }
     }
@@ -96,7 +109,7 @@ jQuery(document).ready(function () {
         if (jQuery(this).attr('data-65') == '0') {
             jQuery('#price-65 span').parents('.form-group').addClass('inactive')
             jQuery('.s100').addClass('active');
-            jQuery('.s100 input').prop('checked', true);;
+            jQuery('.s100 input').prop('checked', true);
             jQuery('.s65').removeClass('active');
         }
         else jQuery('#price-65 span').parents('.form-group').removeClass('inactive');
@@ -137,15 +150,21 @@ jQuery(document).ready(function () {
         else jQuery(el).closest('.flexcon').removeClass('active');
     })
 
+    jQuery('#delivery').on('change', function () {
+        jQuery(this).attr('data-price', '00');
+        calc_price();
+    });
 
-    let el = jQuery('a.step')[0];
-    jQuery(el).closest('.dropdown').find('input.form-control')
-        .val(jQuery(el).attr('data-value') + ' м');
+
+    let el = jQuery('a.step')[Number(jQuery('#buttondropdown').attr('data-length'))/2 - 2];
+    //jQuery(el).closest('.dropdown').find('input.form-control').val(jQuery(el).attr('data-value') + ' м');
     jQuery('#price-100 span').text(jQuery(el).attr('data-100'));
     jQuery('#price-65 span').text(jQuery(el).attr('data-65'));
     if (jQuery(el).attr('data-65') == '0') jQuery('#price-65 span').parents('.form-group').addClass('inactive');
     jQuery('#price-tground span').text(jQuery(el).attr('data-tground'));
+    if (jQuery(el).attr('data-tground') == '0') jQuery('#price-tground span').parents('.form-group').addClass('inactive');
     jQuery('#price-brus span').text(jQuery(el).attr('data-brus'));
+    if (jQuery(el).attr('data-brus') == '0') jQuery('#price-brus span').parents('.form-group').addClass('inactive');
     jQuery('#price-montage span').text(jQuery(el).attr('data-montage'));
 
     calc_price();

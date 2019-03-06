@@ -96,7 +96,7 @@ JHtml::stylesheet('templates/' . $this->template . '/code/owl-carousel/owl.trans
 //JHtml::stylesheet('templates/' . $this->template . '/style/prettyphoto.css');
 
 
-JHtml::stylesheet('templates/' . $this->template . '/fonts/fontawesome/css/font-awesome.min.css');
+JHtml::stylesheet('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 JHtml::stylesheet('templates/' . $this->template . '/fonts/fontello/css/fontello.css');
 JHtml::stylesheet('templates/' . $this->template . '/style/template.css');
 JHtml::stylesheet('templates/' . $this->template . '/style/core.css');

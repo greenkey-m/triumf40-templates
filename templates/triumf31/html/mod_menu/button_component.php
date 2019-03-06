@@ -148,8 +148,18 @@ $title = $item->anchor_title ? 'title="' . $item->anchor_title . '" ' : '';
         echo "<li><a><strong>".$town->category_title."</strong></a></li>\n";
         $region = $town->category_title;
         }
-        echo "<li>".JHtml::_('link','index.php?option=com_geocontact&view=geocontact&id='.$town->id.'&Itemid=224', $town->caption, $attributes)."</li>\n";
-        //echo JRoute::_('index.php?option=com_geocontact&view=geocontact&Itemid='.$town->id);
+        if ($town->id == 184) {
+            echo "<li>".JHtml::_('link','https://kaluga.triumf40.ru', $town->caption, $attributes)."</li>\n";
+        } elseif ($town->id == 194) {
+            echo "<li>".JHtml::_('link','https://obninsk.triumf40.ru', $town->caption, $attributes)."</li>\n";
+        } elseif ($town->id == 189) {
+            echo "<li>".JHtml::_('link','https://ludinovo.triumf40.ru', $town->caption, $attributes)."</li>\n";
+        } elseif ($town->id == 185) {
+            echo "<li>".JHtml::_('link','https://kirov.triumf40.ru', $town->caption, $attributes)."</li>\n";
+        } else {
+            echo "<li>".JHtml::_('link','index.php?option=com_geocontact&view=geocontact&id='.$town->id.'&Itemid=224', $town->caption, $attributes)."</li>\n";
+            //echo JRoute::_('index.php?option=com_geocontact&view=geocontact&Itemid='.$town->id);
+        }
     }
 ?>
 
